@@ -151,7 +151,11 @@ h6 {
   background: var(--accent-color);
   border-color: var(--accent-color);
 }
-
+@media (max-width: 768px){
+  .header{
+    padding: 16px 0
+  }
+}
 @media (max-width: 1200px) {
   .header .logo {
     order: 1;
@@ -492,7 +496,6 @@ h6 {
   margin: 0;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
 }
 
 .footer .footer-navmenu ul li {
@@ -511,6 +514,9 @@ h6 {
 
 .footer .footer-navmenu ul li a:hover {
   color: var(--accent-color);
+}
+.footer .footer-navmenu ul li a.cta-btn:hover{
+  color: var(--contrast-color);
 }
 
 .footer  a.cta-btn,
@@ -810,7 +816,7 @@ section,
 .hero .svg-container{
   position: absolute;
     z-index: 9;
-    bottom: 0;
+    bottom: 3.5rem;
     right: 5.75rem;
     width: 90px;
     height: 232px;
@@ -955,6 +961,11 @@ section,
   background-repeat: no-repeat;
 
 }
+@media (min-width: 576px) {
+  .hero .video-form-container .content-wrap{
+    padding: 0;
+  }
+}
 
 @media (max-width: 768px) {
   .hero h1{
@@ -1013,10 +1024,10 @@ section,
         top: -102px;
   }
 }
-@media (min-width: 576px) {
-  .hero .video-form-container .content-wrap{
-    padding: 0;
-    margin:0
+
+@media (max-width: 992px){
+  .hero{
+    min-height: 90vh;
   }
 }
 
