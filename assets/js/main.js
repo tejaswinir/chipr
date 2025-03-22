@@ -171,4 +171,24 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  
+  let showMore = document.getElementById('show-more')
+if(showMore){
+    showMore.addEventListener("click", function () {
+      document.querySelectorAll('.forge-box').forEach(function(el) {
+        el.classList.toggle('active');
+        showMore.classList.toggle('show')
+      });
+    });
+  }
+
+  let showMore2 = document.getElementById('show-more2')
+  if(showMore2){
+    showMore2.addEventListener("click", function () {
+      document.querySelectorAll('.league-box').forEach(function(el) {
+        el.classList.toggle('active');
+        showMore.classList.toggle('show')
+      });
+    });
+  }
 })();
