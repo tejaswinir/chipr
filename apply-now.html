@@ -18,8 +18,10 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@0, 500;&display=swap" rel="stylesheet">
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@0, 500;&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Vendor CSS Files -->
     <link
@@ -31,6 +33,7 @@
       rel="stylesheet"
     />
     <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap-datepicker.css">
     <link
       href="assets/vendor/glightbox/css/glightbox.min.css"
       rel="stylesheet"
@@ -55,9 +58,9 @@
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="careers.html">Careers</a></li>
-            <li><a  href="why-chipr.html">Why Chipr</a></li>
-            <li><a  href="success-stories.html">Success Stories</a></li>
-            <li><a class="active" href="role-highlights.html">Role Highlights</a></li>
+            <li><a href="why-chipr.html">Why Chipr</a></li>
+            <li><a href="success-stories.html">Success Stories</a></li>
+            <li><a href="role-highlights.html">Role Highlights</a></li>
             <li><a class="cta-btn" href="apply-now.html">Apply Now</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -67,27 +70,25 @@
 
     <main class="main">
       <!-- Hero Section -->
-      <section id="role" class="role-hero section position-relative">
+      <section id="apply-now" class="apply-hero section position-relative">
         <div class="container position-relative">
           <div class="logo d-xl-none d-lg-none d-md-none d-block"></div>
           <div class="row gy-4 mt-6">
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-             
-                <h1>
-                  <span class="default-text-color">Your Day</span><br/>
-                  at Chipr
-                </h1>
-              
-             
+              <h1>
+                <span class="default-text-color">Let’s Make it</span><br />
+                Official
+              </h1>
+
               <p class="body-01">
-                Energy. Freedom. Success. Every Single Day.
+                Pick a time that works for you, and we’ll confirm instantly.
               </p>
             </div>
             <div class="col-lg-8" data-aos="fade-up" data-aos-delay="250">
               <div class="content ps-0 ps-lg-5">
                 <div class="position-relative">
                   <img
-                    src="assets/img/role-hero.png"
+                    src="assets/img/apply-hero.png"
                     class="img-fluid"
                     alt=""
                   />
@@ -96,159 +97,192 @@
             </div>
           </div>
         </div>
-
-        <div class="side-btn">
-          <img src="assets/img/side-btn.png" height="127" />
-        </div>
-        
       </section>
       <!-- /Hero Section -->
 
       <!-- Timeline Section -->
-      <section id="role-timelines" class="role-timeline section">
+      <section id="apply-form" class="apply-form section">
         <div class="container">
-          <h2> Daily Timeline</h2>
-          <div class="row  mt-4 g-4">
-            <div class="col-6 col-xl-4 col-lg-4 col-md-4">
-             <div class="timeline-content">
-              <div>
-              <img src="./assets/img/lunch.svg" />
-              <h3>Morning Launch <br/>(9 AM)</h3>
-              <p>Team huddle, goal setting, territory strategy.</p>
+          <div class="row mt-4 g-4">
+            <div class="col-12 col-xl-6 col-lg-6 col-md-6">
+              <h3>Join Our <br />Winning Team</h3>
+              <p>
+                Ready for a life-changing career? Fill in your details below and
+                we’ll connect you with the right opportunity.
+              </p>
+              <form class="mt-80">
+                <div class="mb-62">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Name"
+                    placeholder="Name*"
+                  />
+                </div>
+                <div class="mb-62">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="Email"
+                    placeholder="Email*"
+                  />
+                </div>
+                <div class="mb-62">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="Phone"
+                    placeholder="Phone*"
+                  />
+                </div>
+                <div class="mb-62">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Location"
+                    placeholder="Location*"
+                  />
+                </div>
+                <select class="form-select" aria-label="Interest">
+                  <option selected>Interest</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </form>
             </div>
-             </div>
-            </div>
-            <div class="col-6 col-xl-4 col-lg-4 col-md-4">
-              <div class="timeline-content">
-              <div>
-                <img src="./assets/img/lunch.svg" />
-                <h3>Peak Performance <br/> (10 AM–3 PM)</h3>
-                <p>Door-to-door hustle, real-time coaching, big wins.</p>
-              </div>
-              </div>
-            </div>
-            <div class="col-12 col-xl-4 col-lg-4 col-md-4">
-              <div class="timeline-content">
+            <div class="col-12 col-xl-6 col-lg-6 col-md-6">
+              <p><strong>Select date</strong></p>
+              <div id="datepicker-inline" class="date-picker-wrap"></div>
+              <p><strong>select preferred time slot</strong></p>
+              <div class="time-slot">
                 <div>
-                <img src="./assets/img/lunch.svg" />
-                <h3>Victory Celebrationc <br/>(4 PM)</h3>
-                <p>Recap the day’s success, plan tomorrow’s hustle.</p>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="options-outlined"
+                    id="9"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success rounded" for="9"
+                    >09:00 am</label
+                  >
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="options-outlined"
+                    id="10"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success rounded" for="10"
+                    >10:00 am</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="options-outlined"
+                    id="11"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success rounded" for="11"
+                    >11:00 am</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="options-outlined"
+                    id="12"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success rounded" for="12"
+                    >12:00 pm</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="options-outlined"
+                    id="1"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success rounded" for="1"
+                    >01:00 pm</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="options-outlined"
+                    id="2"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success rounded" for="2"
+                    >02:00 pm</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="options-outlined"
+                    id="3"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success rounded" for="3"
+                    >03:00 pm</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="options-outlined"
+                    id="4"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success rounded" for="4"
+                    >04:00 pm</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="options-outlined"
+                    id="5"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success rounded" for="5"
+                    >05:00 pm</label
+                  >
+                </div>
+
+                
               </div>
-              </div>
+              <ul class="time-footer w-full mt-3">
+                <li>Available</li>
+                <li>Not Available</li>
+                <li>Selected</li>
+              </ul>
+            </div>
+            <div class="col-12 border-t pt-40">
+              <a class="cta-btn"
+                >schedule interview <i class="bi bi-arrow-right-short"></i
+              ></a>
             </div>
           </div>
-         
         </div>
       </section>
       <!-- /About Section -->
-
-      <!-- Win Section -->
-      <section id="role-win" class="role-win section">
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <div class="row gy-4">
-            <div class="col-12 col-xl-4 col-lg-4 col-md-4">
-              <h2>Everything You Need to Win</h2>
-            </div>
-            <div class="col-12 col-xl-8 col-lg-8 col-md-8">
-              <div class="d-flex align-items-center justify-content-between">
-                <div>
-                  <img src="./assets/img/sales.svg" alt="sales" class="img-fluid" />
-                  <h3>Sales Tech</h3>
-                  <ul>
-                    <li>Mobile CRM</li>
-                      <li>Digital contracts</li>
-                      <li> Territory mapping</li>
-                  </ul>
-                </div>
-                <div>
-                  <div>
-                    <img src="./assets/img/team.svg" alt="sales" class="img-fluid" />
-                    <h3>Team Support</h3>
-                    <ul>
-                      <li>Daily check-ins
-                     </li>
-                        <li>   Performance tracking
-                         </li>
-                        <li> Direct mentor access</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- /Performance Section -->
-
-      <!-- Success Section -->
-      <section id="role-calculator" class="role-calculator section">
-      
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <h2>See How Much You Can Earn!</h2>
-          <div class="col-12 col-xl-6 col-lg-6 col-md-6">
-            <div class="accordion" id="accordionExample">
-              <div class="accordion-item">
-                <h3 class="accordion-header">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    2025 Comp Plan -  Home Solutions Expert (HSX)
-                  </button>
-                </h3>
-                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <h4>Tier Status</h4>
-                    <div class="d-flex gap-4 mb-4">
-                      <!-- Bronze -->
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="tierStatus" id="bronze">
-                        <label class="form-check-label" for="bronze">
-                          Bronze
-                        </label>
-                      </div>
-                    
-                      <!-- Silver -->
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="tierStatus" id="sliver">
-                        <label class="form-check-label" for="sliver">
-                          Sliver
-                        </label>
-                      </div>
-                    
-                      <!-- Gold (active) -->
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="tierStatus" id="gold">
-                        <label class="form-check-label" for="gold">
-                          Gold
-                        </label>
-                      </div>
-                    </div>
-                    <div class="mb-4">
-                      <label for="units" class="form-label">Units Sold (month): <span id="unitsValue">0</span></label>
-                      <input type="range" class="form-range" min="0" max="100" step="1" id="units" />
-                    </div>
-            
-                    <div class="mb-4">
-                      <label for="recruits" class="form-label">HSX Reps Recruited: <span id="recruitsValue">0</span></label>
-                      <input type="range" class="form-range" min="0" max="50" step="1" id="recruits" />
-                    </div>
-            
-                    <div class="mb-4">
-                      <label for="avgSales" class="form-label">Avg. Monthly Sales per HSX Rep: <span id="avgSalesValue">0</span></label>
-                      <input type="range" class="form-range" min="0" max="50" step="1" id="avgSales" />
-                    </div>
-                  </div>
-                  </div>
-                </div>
-              </div>
-              
-            </div>
-          </div>
-          <div class="col-12 col-xl-6 col-lg-6 col-md-6"></div>
-          
-        </div>
-      </section>
-      <!-- /Success Section -->
-
     </main>
 
     <footer id="footer" class="footer dark-background">
@@ -337,7 +371,9 @@
     <div id="preloader"></div>
 
     <!-- Vendor JS Files -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap-datepicker.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>

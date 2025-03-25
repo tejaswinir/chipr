@@ -137,7 +137,15 @@ h6 {
 .mt-12{
   margin-top: 0.75rem
 }
-
+.mt-80{
+  margin-top: 80px
+}
+.mb-62{
+  margin-bottom: 62px;
+}
+.pt-40{
+  padding-top: 40px;
+}
 .default-text-color {
   color: var(--default-color);
 }
@@ -162,6 +170,7 @@ h6 {
   border: 1px solid var(--accent-color);
   font-weight: 800;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .cta-btn:hover,
@@ -169,6 +178,11 @@ h6 {
   color: var(--contrast-color);
   background: var(--accent-color);
   border-color: var(--accent-color);
+}
+
+.cta-btn .bi::before{
+  font-size: 14px;
+  vertical-align: -.3em;
 }
 
 @media (max-width: 767px) {
@@ -231,6 +245,15 @@ h6 {
   font-family: var(--default-font);
   font-size: var(--font-20);
   margin-top: 10px;
+}
+.text-yellow{
+  color: #F6FF00
+}
+.f-w-600{
+  font-weight: 600;
+}
+.border-t{
+  border-top: 1px solid #f0f0f0
 }
 /*--------------------------------------------------------------
 # Global Header
@@ -879,7 +902,6 @@ section,
 --------------------------------------------------------------*/
 .hero {
   width: 100%;
-  min-height: 100vh;
   position: relative;
   padding: 80px 0 0;
   display: flex;
@@ -2229,4 +2251,199 @@ section,
 .role-calculator .accordion-item:last-of-type>.accordion-header .accordion-button.collapsed{
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
+}
+
+.role-calculator .accordion-body .form-check-input{
+  background-color: transparent;
+}
+
+.role-calculator .accordion-body .form-check-input:checked[type=radio]{
+  background-image: url(../img/radio-bg.svg);
+  border-color: #fff;
+  background-size: 10px;
+
+}
+.form-range::-webkit-slider-thumb{
+  background: #fff;
+  border: 1px solid #2DE65E
+}
+.form-range::-moz-range-thumb{
+  background: #fff;
+  border: 1px solid #2DE65E
+}
+/*--------------------------------------------------------------
+# Apply now Section
+--------------------------------------------------------------*/
+
+.apply-hero h1{
+  font-size: clamp(28px, 2.08vw + 19.26px, 46px);
+  line-height: 1;
+  font-family: var(--heading-font);
+  color: var(--accent-color);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.apply-form h3{
+  font-size: clamp(26px, calc(1.96vw + 17.77px), 46px);
+  line-height: clamp(26px, calc(2.35vw + 16.13px), 50px);
+  font-family: var(--heading-font);
+  text-transform: uppercase;
+  color: var(--default-color)
+}
+.apply-form .form-control, .apply-form .form-select{
+  border-top:0px;
+  border-left:0px;
+  border-radius: 0px;
+  border-right: 0px;
+  border-bottom: 1px dotted var(--default-color);
+  font-size: 12px;
+  padding-left: 0px;
+}
+#datepicker-inline .datepicker-inline{
+  width: 350px;
+  margin-bottom: 34px;
+}
+.datepicker table{
+  width: 100%;
+}
+.apply-form .date-picker-wrap .datepicker{
+  border: 1px solid #f0f0f0;
+  padding: 20px;
+}
+.apply-form .datepicker td, .datepicker th{
+  width: 35px;
+  height: 35px;
+  font-size: 12px;
+}
+
+.apply-form .time-slot{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+
+.apply-form .cta-btn, 
+.apply-form .cta-btn:focus{
+  color: var(--default-color);
+}
+.apply-form .btn-outline-success{
+  border-color: #02BD40;
+  font-size: 12px;
+  color: var(--default-color)
+}
+.apply-form .btn.btn-outline-success.rounded{
+  border-radius: 32px !important;
+}
+
+.apply-form .btn-check:checked+.btn{
+  border-color: #EC5D25;
+  background-color: #EC5D25;
+}
+
+.apply-form .time-footer{
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px
+
+}
+
+.apply-form .time-footer li{
+  padding-left: 12px;
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+  background-size: 6px 6px; /* adjust as needed */
+  margin-bottom: 10px;
+  color: var(--default-color);
+  font-size: 12px;
+  line-height: 100%;
+}
+
+.apply-form .time-footer li:nth-child(1){ 
+  background-image: url('../img/available.svg'); 
+}
+.apply-form .time-footer li:nth-child(2){ 
+  background-image: url('../img/not-available.svg'); 
+}
+.apply-form .time-footer li:nth-child(3){ 
+  background-image: url('../img/selected.svg'); 
+}
+
+.apply-form p{
+  font-size: clamp(12px, calc(0.98vw + 7.88px), 22px);
+  line-height: 100%;
+  text-transform: capitalize;
+}
+.scheduled-hero.section{
+  background-image: url(../img/scheduled-hero-bg.png);
+  background-position: center;
+  background-size: cover;
+}
+.scheduled-hero h1 {
+  font-size: clamp(38px, calc(2.94vw + 25.65px), 68px);
+  line-height: clamp(34px, calc(2.55vw + 23.29px), 60px);
+  font-family: var(--heading-font);
+  color: var(--contrast-color);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 21px;
+}
+.scheduled-hero h6{
+  font-size: clamp(18px, calc(-0.392vw + 23.65px), 22px);
+  line-height: clamp(18px, calc(-0.98vw + 32.12px), 28px);
+  color: var(--contrast-color);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.scheduled-hero p{
+  font-size: clamp(12px, calc(-0.196vw + 14.82px), 14px);
+  line-height: clamp(12px, calc(-0.588vw + 20.47px), 18px);
+  padding-top: 21px;
+  border-top: 1px dotted var(--contrast-color);
+  color: var(--contrast-color);
+
+}
+.quick-links.section{
+  background-image: url(../img/quick-links-bg.png);
+  background-position: center;
+  background-size: cover;
+}
+.quick-links .social p{
+  font-size: 12px;
+  margin-bottom: 0;
+  color: var(--contrast-color);
+}
+.quick-links .social .img{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin: 21px 0;
+}
+
+.quick-links .quick-links-content p{
+  font-size: clamp(12px, calc(-0.196vw + 14.82px), 14px);
+  line-height: clamp(12px, calc(-0.588vw + 20.47px), 18px);
+  color: var(--contrast-color);
+  margin-bottom: 5px;
+}
+.quick-links .quick-links-content ul {
+  list-style: none;
+  padding:0;
+  color: var(--contrast-color);
+  
+}
+
+.quick-links .quick-links-content ul li {
+  font-size: clamp(12px, calc(-0.196vw + 14.82px), 14px);
+  line-height: clamp(12px, calc(-0.588vw + 20.47px), 18px);
+  padding: 5px 0;
+  border-top: 1px dotted var(--contrast-color)
+}
+.quick-links .quick-links-content ul li:last-child{
+  border-bottom: 1px dotted var(--contrast-color)
 }
