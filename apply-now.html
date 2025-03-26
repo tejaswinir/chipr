@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Index - Chipr</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@0, 500;&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap-datepicker.css">
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+  </head>
+
+  <body class="index-page">
+    <header id="header" class="header d-flex align-items-center fixed-top">
+      <div
+        class="container-fluid container-xl position-relative d-flex align-items-center"
+      >
+        <a href="index.html" class="logo d-flex align-items-center me-auto">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <img src="assets/img/logo.svg" alt="CHIPR" />
+          <!-- <h1 class="sitename">Chipr</h1> -->
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="why-chipr.html">Why Chipr</a></li>
+            <li><a href="success-stories.html">Success Stories</a></li>
+            <li><a href="role-highlights.html">Role Highlights</a></li>
+            <li><a class="cta-btn" href="apply-now.html">Apply Now</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Hero Section -->
+      <section id="apply-now" class="apply-hero section position-relative">
+        <div class="container position-relative">
+          <div class="logo d-xl-none d-lg-none d-md-none d-block"></div>
+          <div class="row gy-4 mt-6">
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+              <h1>
+                <span class="default-text-color">Let’s Make it</span><br />
+                Official
+              </h1>
+
+              <p class="body-01">
+                Pick a time that works for you, and we’ll confirm instantly.
+              </p>
+            </div>
+            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="250">
+              <div class="content ps-0 ps-lg-5">
+                <div class="position-relative">
+                  <img
+                    src="assets/img/apply-hero.png"
+                    class="img-fluid"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /Hero Section -->
+
+      <!-- Timeline Section -->
+      <section id="apply-form" class="apply-form section">
+        <div class="container">
+          <div class="row mt-4 g-4">
+            <div class="col-12 col-xl-6 col-lg-6 col-md-6">
+              <h3>Join Our <br />Winning Team</h3>
+              <p>
+                Ready for a life-changing career? Fill in your details below and
+                we’ll connect you with the right opportunity.
+              </p>
+              <form class="mt-80">
+                <div class="mb-62">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Name"
+                    placeholder="Name*"
+                  />
+                </div>
+                <div class="mb-62">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="Email"
+                    placeholder="Email*"
+                  />
+                </div>
+                <div class="mb-62">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="Phone"
+                    placeholder="Phone*"
+                  />
+                </div>
+                <div class="mb-62">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Location"
+                    placeholder="Location*"
+                  />
+                </div>
+                <select class="form-select" aria-label="Interest">
+                  <option selected>Interest</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </form>
+            </div>
+            <div class="col-12 col-xl-6 col-lg-6 col-md-6">
+              <p><strong>Select date</strong></p>
+              <div id="datepicker-inline" class="date-picker-wrap"></div>
+              <p><strong>select preferred time slot</strong></p>
+              <div class="time-slot">
+                <div>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="options-outlined"
+                    id="9"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success rounded" for="9"
+                    >09:00 am</label
+                  >
+                </div>
+
+                <div>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="options-outlined"
+                    id="10"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success rounded" for="10"
+                    >10:00 am</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="options-outlined"
+                    id="11"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success rounded" for="11"
+                    >11:00 am</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="options-outlined"
+                    id="12"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success rounded" for="12"
+                    >12:00 pm</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="options-outlined"
+                    id="1"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success rounded" for="1"
+                    >01:00 pm</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="options-outlined"
+                    id="2"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success rounded" for="2"
+                    >02:00 pm</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="options-outlined"
+                    id="3"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success rounded" for="3"
+                    >03:00 pm</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="options-outlined"
+                    id="4"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success rounded" for="4"
+                    >04:00 pm</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    class="btn-check"
+                    name="options-outlined"
+                    id="5"
+                    autocomplete="off"
+                  />
+                  <label class="btn btn-outline-success rounded" for="5"
+                    >05:00 pm</label
+                  >
+                </div>
+
+                
+              </div>
+              <ul class="time-footer w-full mt-3">
+                <li>Available</li>
+                <li>Not Available</li>
+                <li>Selected</li>
+              </ul>
+            </div>
+            <div class="col-12 border-t pt-40">
+              <a class="cta-btn"
+                >schedule interview <i class="bi bi-arrow-right-short"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /About Section -->
+    </main>
+
+    <footer id="footer" class="footer dark-background">
+      <div class="d-none d-md-block d-lg-block d-xl-block">
+        <div class="container footer-top px-0">
+          <div class="row gx-0">
+            <div class="col-12">
+              <img src="./assets/img/logo.svg" alt="chipr" />
+            </div>
+            <div class="col-8">
+              <nav class="footer-navmenu">
+                <ul>
+                  <li><a href="careers.html">Careers</a></li>
+                  <li><a href="why-chipr.html">Why Chipr</a></li>
+                  <li><a href="success-stories.html">Success Stories</a></li>
+                  <li><a href="role-highlights.html">Role Highlights</a></li>
+                  <li>
+                    <a class="cta-btn" href="apply-now.html">Apply Now</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div class="col-4">
+              <div class="social-links d-flex justify-content-end">
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container copyright text-left mt-4">
+          <p>© <span>2025</span> <span class="px-1 sitename">Chipr</span></p>
+        </div>
+      </div>
+      <div class="d-block d-md-none d-lg-none d-xl-none">
+        <div class="container footer-top">
+          <div class="row gx-0">
+            <div class="col-6">
+              <img src="./assets/img/logo.svg" alt="chipr" />
+            </div>
+            <div class="col-6" style="text-align: right">
+              <a class="cta-btn" href="apply-now.html">Apply Now</a>
+            </div>
+            <div class="col-12 mt-2">
+              <nav class="footer-navmenu">
+                <ul>
+                  <li><a href="careers.html">Careers</a></li>
+                  <li><a href="why-chipr.html">Why Chipr</a></li>
+                  <li><a href="success-stories.html">Success Stories</a></li>
+                  <li><a href="role-highlights.html">Role Highlights</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="container copyright text-left">
+          <div class="row">
+            <div class="col">
+              <p>
+                © <span>2025</span> <span class="px-1 sitename">Chipr</span>
+              </p>
+            </div>
+            <div class="col">
+              <div class="social-links d-flex justify-content-end">
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
