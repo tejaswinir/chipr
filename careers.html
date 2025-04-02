@@ -426,7 +426,7 @@ const tl2 = gsap.timeline({ repeat: -1, repeatDelay: 0.5 });
 tl2.to(paths, {
     strokeDashoffset: 0,
     strokeOpacity: 0.2,
-    duration: 2,
+    duration: 1,
     stagger: 0.2,
     ease: "power1.inOut"
   });
@@ -434,7 +434,7 @@ tl2.to(paths, {
   // 2. Fill paths with D9D9D9 at 0.3 opacity
   tl2.to(paths, {
     fillOpacity: 0.2,
-    duration: 1,
+    duration: 0.5,
     stagger: 0.2,
     ease: "power1.out"
   }, "-=1.5");
@@ -444,7 +444,7 @@ tl2.to(paths, {
     fillOpacity: 0,
     strokeOpacity: 0,
     strokeDashoffset: 1000,
-    duration: 2,
+    duration: 1,
     stagger: 0.2,
     ease: "power1.inOut"
   }, "+=0.5");

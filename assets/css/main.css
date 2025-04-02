@@ -981,15 +981,15 @@ section,
 
 .hero h1 {
   font-family: var(--heading-font);
-  font-size: var(--font-80);
+  font-size: clamp(68px, 5.6vw, 80px);
+  line-height: clamp(58px, 4.2vw, 60px);
   color: var(--default-color);
-  line-height: 0.85;
   font-weight: 700;
 }
 
 .hero h2 {
   margin: 0;
-  font-size: var(--font-38);
+  font-size:38px;
   font-weight: 700;
   text-transform: uppercase;
   color: var(--accent-color);
@@ -1008,8 +1008,8 @@ section,
 .hero p {
   color: var(--default-color);
   margin: 10px 0 0 0;
-  font-size: var(--font-14);
-  line-height: 1.2857;
+   font-size: clamp(12px, 1.2vw, 14px);
+  line-height: clamp(100%, 1.5vw, 18px);
 }
 
 .hero .video-container {
@@ -1196,14 +1196,8 @@ section,
     width: 75%;
     height: 100%;
   }
-  .hero h2 {
-    font-size: var(--font-sm-28);
-  }
-  .hero h1 {
-    font-size: var(--font-sm-68);
-  }
   .hero h6 {
-    font-size: var(--font-sm-18);
+    font-size: 18px;
   }
   .hero p {
     font-size: var(--font-sm-12);
@@ -1225,9 +1219,7 @@ section,
     margin: auto;
     top: -90px;
   }
-  .hero .video-form-container .content-wrap h6 {
-    font-size: var(--font-sm-18);
-  }
+
   .hero .video-form-container .content-wrap p,
   .hero .form-label {
     font-size: var(--font-sm-12);
