@@ -75,8 +75,9 @@
     window.addEventListener("load", function () {
       if (typeof AOS !== 'undefined') {
         AOS.init({
-          duration: 600,
-          easing: "ease-in-out",
+          offset: 120,
+          duration: 1000,
+          easing: 'ease-in-out',
           once: true,
           mirror: false,
         });
@@ -170,7 +171,7 @@
       $('#recruits').prop('disabled', personalUnits < 15);
       $('#avgSales').prop('disabled', personalUnits < 15);
 
-     
+
       // Enable or disable radio buttons based on tier
       ['Bronze', 'Silver', 'Gold'].forEach(t => {
         let id = `radio-${t.toLowerCase()}`
@@ -191,7 +192,7 @@
           input.val(value + 1).trigger('input');
         }
       });
-  
+
       $('.btn-action-min').off('click').on('click', function () {
         const id = $(this).data('id');
         const input = $('#' + id);
@@ -214,5 +215,170 @@
         preloader.remove();
       });
     }
+  }
+  gsap.to(".marquee-track", {
+    xPercent: -50,
+    duration: 20,
+    repeat: -1,
+    ease: "linear",
+  });
+  const paths = document.querySelectorAll(".marquee path");
+
+  paths.forEach((path) => {
+    const length = path.getTotalLength();
+    path.style.strokeDasharray = length;
+    path.style.strokeDashoffset = length;
+
+    gsap.to(path, {
+      strokeDashoffset: 0,
+      duration: 4,
+      ease: "power1.inOut",
+      repeat: -1,
+      yoyo: true,
+    });
+  });
+  const arrowsTopToBottom = Array.from(
+    document.querySelectorAll(".down-arrow-a path")
+  ).reverse();
+
+  gsap.to(arrowsTopToBottom, {
+    opacity: 1,
+    duration: 0.8,
+    repeat: -1,
+    yoyo: true,
+    ease: "power1.inOut",
+    stagger: {
+      each: 0.2,
+      from: "start", // Ensures top to bottom
+      repeat: -1,
+      yoyo: true,
+    },
+  });
+  const quotes = document.getElementById("quotes");
+  const typeTarget = document.getElementById("typeTarget");
+  const revealButton = document.getElementById("afterButton");
+
+  const lines = [
+    "From rookie to 15-person team lead in 8 months.",
+    "--",
+    { bold: "Jordan Martinez" },
+  ];
+
+  let lineIndex = 0;
+  let charIndex = 0;
+
+  function typeNextChar() {
+    const currentLine = lines[lineIndex];
+    const isBold = typeof currentLine === "object";
+
+    if (!typeTarget.children[lineIndex]) {
+      const lineEl = document.createElement("div");
+      lineEl.innerHTML = isBold ? "<strong></strong>" : "";
+      typeTarget.appendChild(lineEl);
+    }
+
+    const lineEl = typeTarget.children[lineIndex];
+    const targetEl = isBold ? lineEl.querySelector("strong") : lineEl;
+    const text = isBold ? currentLine.bold : currentLine;
+
+    targetEl.textContent += text[charIndex];
+    charIndex++;
+
+    if (charIndex < text.length) {
+      setTimeout(typeNextChar, 40);
+    } else {
+      lineIndex++;
+      charIndex = 0;
+      if (lineIndex < lines.length) {
+        setTimeout(typeNextChar, 400);
+      } else {
+        const cursor = document.createElement("span");
+        cursor.classList.add("cursor");
+        cursor.innerHTML = "|";
+        typeTarget.appendChild(cursor);
+
+        setTimeout(() => {
+          cursor.remove();
+          gsap.to(revealButton, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+          });
+        }, 500);
+      }
+    }
+  }
+
+  // ✅ Observer to trigger entire flow
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !entry.target.dataset.hasAnimated) {
+          entry.target.dataset.hasAnimated = "true";
+
+          // Fade in main container
+          gsap.to("#logo-animation", {
+            opacity: 1,
+            duration: 0.6,
+            ease: "power2.out",
+          });
+
+          // Fade in image
+          gsap.to(quotes, {
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out",
+            onComplete: () => {
+              typeNextChar(); // Start typing
+            },
+          });
+
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.4 }
+  );
+ 
+  const logoPaths = document.querySelectorAll(".chipr-logo path");
+  const tl2 = gsap.timeline({ repeat: -1, repeatDelay: 0.5 });
+  // 1. Draw strokes
+  tl2.to(logoPaths, {
+    strokeDashoffset: 0,
+    strokeOpacity: 0.2,
+    duration: 1,
+    stagger: 0.2,
+    ease: "power1.inOut",
+  });
+
+  // 2. Fill paths with D9D9D9 at 0.3 opacity
+  tl2.to(
+    logoPaths,
+    {
+      fillOpacity: 0.2,
+      duration: 0.5,
+      stagger: 0.2,
+      ease: "power1.out",
+    },
+    "-=1.5"
+  );
+
+  // 3. Fade out both stroke and fill
+  tl2.to(
+    logoPaths,
+    {
+      fillOpacity: 0,
+      strokeOpacity: 0,
+      strokeDashoffset: 1000,
+      duration: 1,
+      stagger: 0.2,
+      ease: "power1.inOut",
+    },
+    "+=0.5"
+  );
+  let logoanimation = document.getElementById("logo-animation")
+  if(logoanimation !==  undefined){
+  observer.observe(document.getElementById("logo-animation"));
   }
 })();
