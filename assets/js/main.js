@@ -1,4 +1,5 @@
-// IIFE to encapsulate all logic
+
+var token = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTc0MzQwNDIzOSwiaWF0IjoxNzQzNDA0MjM5fQ.Zq9Za-ap5kbXgBezl90lrBOJGTWjVt75n_q6hdo7ADE";
 (function () {
   "use strict";
 
@@ -8,11 +9,14 @@
     initNavScrollSpy();
     initAOS();
     initShowMoreButtons();
-    initDatepicker();
     initCompensationCalculator();
-    removePreloader();
-  });
+    const path = window.location.pathname.toLowerCase();
 
+    // Only remove preloader if NOT on index or careers pages
+    if (!path.includes('index') && !path.includes('careers') && !path.includes('scheduled')) {
+      removePreloader();
+    }
+  });
   /** Mobile nav toggle **/
   function initMobileNav() {
     const mobileNavToggleBtn = document.querySelector(".mobile-nav-toggle");
@@ -108,18 +112,6 @@
     }
   }
 
-  /** Bootstrap Datepicker **/
-  function initDatepicker() {
-    if (typeof $ !== "undefined" && $.fn.datepicker) {
-      $('#datepicker-inline').datepicker({
-        todayHighlight: true,
-        format: 'mm/dd/yyyy',
-        autoclose: true,
-        inline: true
-      });
-    }
-  }
-
   /** Compensation Calculator **/
   function initCompensationCalculator() {
     if (typeof $ === "undefined") return;
@@ -184,28 +176,39 @@
         }
       });
 
-      $('.btn-action-add').off('click').on('click', function () {
-        const id = $(this).data('id');
-        const input = $('#' + id);
-        let value = parseInt(input.val());
-        if (value < parseInt(input.attr('max'))) {
-          input.val(value + 1).trigger('input');
-        }
-      });
-
-      $('.btn-action-min').off('click').on('click', function () {
-        const id = $(this).data('id');
-        const input = $('#' + id);
-        let value = parseInt(input.val());
-        if (value > parseInt(input.attr('min'))) {
-          input.val(value - 1).trigger('input');
-        }
-      });
-    }
+      
 
     $('#units, #recruits, #avgSales').on('input', updateDisplay);
     updateDisplay();
   }
+
+  $('.btn-action-add').off('click').on('click', function () {
+    debugger
+    const id = $(this).data('id');
+    const input = $('#' + id);
+    let value = parseInt(input.val());
+    if (value < parseInt(input.attr('max'))) {
+      input.val(value + 5).trigger('input');
+      updateDisplay();
+      
+    }
+    if(id === 'units' && personalUnits < 15){
+     
+    }
+  });
+
+  $('.btn-action-min').off('click').on('click', function () {
+    const id = $(this).data('id');
+    const input = $('#' + id);
+    let value = parseInt(input.val());
+    if (value > parseInt(input.attr('min'))) {
+      input.val(value - 5).trigger('input');
+      updateDisplay();
+    }
+  });
+}
+
+
 
   /** Preloader Removal **/
   function removePreloader() {
@@ -218,7 +221,7 @@
   }
   gsap.to(".marquee-track", {
     xPercent: -50,
-    duration: 20,
+    duration: 8,
     repeat: -1,
     ease: "linear",
   });
@@ -298,14 +301,18 @@
         typeTarget.appendChild(cursor);
 
         setTimeout(() => {
-          cursor.remove();
+          gsap.to(cursor, {
+            opacity: 0,
+            onComplete: () => cursor.remove(),
+          });
+        
           gsap.to(revealButton, {
             opacity: 1,
             y: 0,
             duration: 0.8,
             ease: "power2.out",
           });
-        }, 500);
+        }, 1000);
       }
     }
   }

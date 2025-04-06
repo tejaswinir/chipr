@@ -50,26 +50,26 @@
 
 /* font sizes */
 :root {
-  --font-16: 1.111vw;
-  --font-14: 0.972vw;
-  --font-18: 1.25vw;
-  --font-38: 2.639vw;
-  --font-80: 5.556vw;
-  --font-12: 0.833vw;
-  --font-68: 4.72vw;
-  --font-22: 1.528vw;
-  --font-20: 1.389vw;
-  --font-40: 2.778vw;
-  --font-48: 3.333vw;
-  --font-46: 3.194vw;
-  --font-sm-16: 3.81vw;
-  --font-sm-28: 6.667vw;
-  --font-sm-12: 2.857vw;
-  --font-sm-14: 3.333vw;
-  --font-sm-18: 4.286vw;
-  --font-sm-38: 9.048vw;
-  --font-sm-68: 16.19vw;
-  --font-sm-46: 10.952vw;
+  --fs-60-80: clamp(60px, calc(60px + 20 * ((100vw - 420px) / 1020)), 80px);
+  --fs-68-38: clamp(38px, calc(38px + 20 * ((100vw - 420px) / 1020)), 68px);
+  --fs-46-28: clamp(28px, calc(28px + 20 * ((100vw - 420px) / 1020)), 46px);
+  --fs-28-18: clamp(18px, calc(28px - 10px * ((100vw - 420px) / 1020)),28px);
+  --fs-22-18: clamp(18px, calc(22px - 4px * ((100vw - 420px) / 1020)), 22px);
+  --fs-22-16: clamp(16px, calc(22px - 6px * ((100vw - 420px) / 1020)), 22px);
+  --fs-22-12: clamp(12px, calc(22px - 10px * ((100vw - 420px) / 1020)), 22px);
+  --fs-20-16: clamp(16px, calc(20px - 4px * ((100vw - 420px) / 1020)), 20px);
+  --fs-20-12: clamp(12px, calc(20px - 8px * ((100vw - 420px) / 1020)), 20px);
+  --fs-18-16: clamp(16px, calc(18px - 2px * ((100vw - 420px) / 1020)), 18px);
+  --fs-16-12: clamp(12px, calc(16px - 4px * ((100vw - 420px) / 1020)), 16px);
+  --fs-14-12: clamp(12px, calc(14px - 2px * ((100vw - 420px) / 1020)), 14px);
+  --fs-12-16: clamp(12px, calc(16px - 4 * ((100vw - 420px) / 1020)), 16px);
+  --fs-46: 46px;
+  --fs-38: 38px;
+  --fs-28: 28px;
+  --fs-24: 24px;
+  --fs-18: 18px;
+  --fs-16: 16px;
+  --fs-12: 12px;
 }
 
 /*--------------------------------------------------------------
@@ -93,6 +93,7 @@ body {
   background-color: var(--background-color);
   font-family: var(--default-font);
   overflow-x: hidden;
+  font-size: var(--fs-14-12);
 }
 
 a {
@@ -114,6 +115,7 @@ h5,
 h6 {
   color: var(--default-color);
   font-family: var(--heading-font);
+  font-weight: 700;
 }
 
 .mt-40,
@@ -164,7 +166,7 @@ h6 {
 .cta-btn,
 .cta-btn:focus {
   color: var(--contrast-color);
-  font-size: var(--font-12);
+  font-size: var(--fs-12);
   padding: 10px 18px;
   border-radius: 100px;
   transition: 0.3s;
@@ -173,6 +175,7 @@ h6 {
   font-weight: 800;
   white-space: nowrap;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .cta-btn.cta-btn-b:hover,
@@ -189,12 +192,42 @@ h6 {
   border-color: var(--accent-color);
 }
 
+.cta-btn.cta-btn-b{
+  color: var(--default-color)
+}
+button.cta-btn-w:disabled {
+  color: var(--contrast-color);
+    pointer-events: none;
+    background-color: transparent;
+    border-color: var(--accent-color);
+    opacity: 0.65;
+}
+button.cta-btn-b:disabled {
+  color: var(--default-color);
+    pointer-events: none;
+    background-color: transparent;
+    border-color: var(--accent-color);
+    opacity: 0.65;
+}
+.btn-outline-primary{
+  border-radius: 100px;
+  border-color: var(--accent-color);
+  font-size: var(--fs-12);
+  color: var(--default-color);
+  padding: 10px 18px;
+  text-transform: uppercase;
+  font-weight: 800;
+}
 
+.btn-outline-primary:hover{
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+}
 
 @media (max-width: 767px) {
   .cta-btn,
   .cta-btn:focus {
-    font-size: var(--font-sm-12);
+    font-size: var(--fs-12);
   }
 }
 .text-accent {
@@ -244,12 +277,12 @@ h6 {
 .body-01 {
   font-weight: 500;
   font-family: var(--default-font);
-  font-size: var(--font-22);
+  font-size: var(--fs-22-18);
 }
 .body-02 {
   font-weight: 600;
   font-family: var(--default-font);
-  font-size: var(--font-20);
+  font-size: var(--fs-22-16);
   margin-top: 10px;
 }
 .text-yellow {
@@ -336,12 +369,23 @@ h6 {
 
 .cursor {
   display: inline-block;
-  width: 1ch;
-  background: #fff;
-  animation: blink 0.7s steps(1) infinite;
+  font-weight: bold;
   margin-left: 2px;
+  animation: blink 0.7s step-end infinite;
 }
 
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.custom-container {
+  padding-left: clamp(28px, 6vw, 123px);
+  padding-right: clamp(28px, 6vw, 123px);
+}
+.toast.show{
+  z-index: 999;
+}
 /*--------------------------------------------------------------
 # Global Header
 --------------------------------------------------------------*/
@@ -457,7 +501,7 @@ h6 {
   .navmenu a,
   .navmenu a:focus {
     color: var(--nav-color);
-    font-size: var(--font-12);
+    font-size: var(--fs-12-16);
     padding: 0 2px;
     font-family: var(--nav-font);
     font-weight: 500;
@@ -529,7 +573,7 @@ h6 {
 
   .navmenu .dropdown ul a {
     padding: 10px 20px;
-    font-size: var(--font-14);
+    font-size: var(--fs-12);
     text-transform: none;
     color: var(--nav-dropdown-color);
   }
@@ -602,7 +646,7 @@ h6 {
     color: var(--nav-dropdown-color);
     padding: 10px 20px;
     font-family: var(--nav-font);
-    font-size: var(--font-14);
+    font-size: var(--fs-12);
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -690,11 +734,14 @@ h6 {
   .mobile-nav-active .navmenu > ul {
     display: block;
   }
+  .mobile-nav-active .navmenu > ul > li{
+    border-top: 1px dotted #D9D9D9
+  }
 }
 @media screen and (max-width: 768px) {
   .navmenu a,
   .navmenu a:focus {
-    font-size: var(--font-sm-12);
+    font-size: var(--fs-12);
   }
 }
 
@@ -726,7 +773,7 @@ h6 {
   justify-content: center;
   width: 24px;
   height: 24px;
-  font-size: var(--font-12);
+  font-size: var(--fs-12);
   color: var(--contrast-color);
   margin-right: 10px;
   transition: 0.3s;
@@ -747,7 +794,7 @@ h6 {
 .footer .footer-navmenu ul li {
   white-space: nowrap;
   padding: 15px 14px;
-  font-size: var(--font-12);
+  font-size: var(--fs-12);
 }
 .footer .footer-navmenu ul li:first-child {
   padding: 15px 14px 15px 0;
@@ -764,7 +811,7 @@ h6 {
 .footer .footer-navmenu ul li a.cta-btn,
 .footer .footer-navmenu ul li a.cta-btn:focus {
   color: var(--default-color);
-  font-size: var(--font-12);
+  font-size: var(--fs-12);
   padding: 7px 20px;
   border-radius: 100px;
   transition: 0.3s;
@@ -788,7 +835,13 @@ h6 {
 
 .footer .copyright p {
   margin-bottom: 0;
-  font-size: var(--font-12);
+  font-size: var(--fs-12);
+}
+.h-md{
+  height: 220px;
+}
+.h-sm{
+  height: 330px;
 }
 @media screen and (max-width: 768px) {
   .footer .footer-navmenu ul {
@@ -800,13 +853,13 @@ h6 {
   }
   .footer .footer-navmenu ul li {
     padding-left: 0;
-    font-size: var(--font-sm-12);
+    font-size: var(--fs-12);
   }
 
   .footer a.cta-btn,
   .footer a.cta-btn:focus,
   .footer .copyright p {
-    font-size: var(--font-sm-12);
+    font-size: var(--fs-12);
   }
 
   .footer .social-links a {
@@ -858,62 +911,13 @@ h6 {
   }
 }
 /*--------------------------------------------------------------
-# Global Page Titles & Breadcrumbs
---------------------------------------------------------------*/
-.page-title {
-  color: var(--default-color);
-  background-color: var(--background-color);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 160px 0 80px 0;
-  text-align: center;
-  position: relative;
-}
-
-.page-title:before {
-  content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 30%);
-  position: absolute;
-  inset: 0;
-}
-
-.page-title h1 {
-  font-size: 42px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.page-title .breadcrumbs ol {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-  font-size: 16px;
-  font-weight: 400;
-}
-
-.page-title .breadcrumbs ol li + li {
-  padding-left: 10px;
-}
-
-.page-title .breadcrumbs ol li + li::before {
-  content: "/";
-  display: inline-block;
-  padding-right: 10px;
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
-}
-
-/*--------------------------------------------------------------
 # Global Sections
 --------------------------------------------------------------*/
 section,
 .section {
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 60px 0;
+  padding: 80px 0;
   scroll-margin-top: 90px;
   overflow: clip;
 }
@@ -922,51 +926,6 @@ section,
   section,
   .section {
     scroll-margin-top: 76px;
-  }
-}
-
-/*--------------------------------------------------------------
-# Global Section Titles
---------------------------------------------------------------*/
-
-.section-title {
-  padding-bottom: 60px;
-  position: relative;
-}
-
-.section-title h2 {
-  font-size: 14px;
-  font-weight: 500;
-  padding: 0;
-  line-height: 1px;
-  margin: 0;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
-  position: relative;
-}
-
-.section-title h2::after {
-  content: "";
-  width: 120px;
-  height: 1px;
-  display: inline-block;
-  background: var(--accent-color);
-  margin: 4px 10px;
-}
-
-.section-title p {
-  color: var(--heading-color);
-  margin: 0;
-  font-size: 36px;
-  font-weight: 800;
-  text-transform: uppercase;
-  font-family: var(--heading-font);
-}
-
-@media (max-width: 768px) {
-  .section-title p {
-    font-size: 24px;
   }
 }
 
@@ -989,7 +948,7 @@ section,
 
 .hero h1 {
   font-family: var(--heading-font);
-  font-size: clamp(68px, 5.6vw, 80px);
+  font-size: var(--fs-60-80);
   line-height: clamp(58px, 4.2vw, 60px);
   color: var(--default-color);
   font-weight: 700;
@@ -1006,7 +965,7 @@ section,
 }
 .hero h6 {
   margin: 10px 0 0;
-  font-size: var(--font-18);
+  font-size: var(--fs-18);
   font-family: var(--default-font);
   font-weight: 600;
   line-height: 1;
@@ -1016,7 +975,7 @@ section,
 .hero p {
   color: var(--default-color);
   margin: 10px 0 0 0;
-  font-size: clamp(12px, 1.2vw, 14px);
+  font-size: var(--fs-14-12);
   line-height: clamp(100%, 1.5vw, 18px);
 }
 
@@ -1084,18 +1043,18 @@ section,
 
 .hero .video-form-container .content-wrap h6 {
   color: var(--contrast-color);
-  font-size: 18px;
+  font-size: var(--fs-18);
   font-family: var(--default-font);
 }
 .hero .video-form-container .content-wrap p {
   color: var(--contrast-color);
-  font-size: clamp(12px, 1.5vw, 14px);
+  font-size: var(--fs-12);
   font-family: var(--default-font);
 }
 
 .hero .form-label {
   color: var(--contrast-color);
-  font-size: clamp(12px, 2vw, 16px);
+  font-size: var(--fs-12);
 }
 
 .hero .form-control {
@@ -1238,7 +1197,7 @@ section,
 # About Section
 --------------------------------------------------------------*/
 .career {
-  padding: 80px 0 80px;
+  padding: 100px 0 80px;
   display: flex;
   align-items: center;
 }
@@ -1247,7 +1206,7 @@ section,
 .career .h1 {
   font-family: var(--heading-font);
   font-weight: 700;
-  font-size: var(--font-68);
+  font-size: var(--fs-68-38);
   color: var(--accent-color);
   line-height: 0.8824;
   text-transform: uppercase;
@@ -1261,12 +1220,12 @@ section,
 .career .body-01 {
   font-weight: 600;
   font-family: var(--default-font);
-  font-size: var(--font-22);
+  font-size: var(--fs-22-18);
 }
 .career .body-02 {
   font-weight: 600;
   font-family: var(--default-font);
-  font-size: var(--font-20);
+  font-size: var(--fs-20-12);
   margin-top: 10px;
 }
 .career .video-wrap {
@@ -1279,15 +1238,6 @@ section,
 }
 
 @media (max-width: 767px) {
-  .career h1 {
-    font-size: var(--font-sm-38);
-  }
-  .career .body-01 {
-    font-size: var(--font-sm-18);
-  }
-  .career .body-02 {
-    font-size: var(--font-sm-18);
-  }
   .career .content-wrap{
     width: 82%;
   }
@@ -1298,7 +1248,7 @@ section,
 
 @media (min-width: 767px){
   .career .content-wrap{
-    width: 84%;
+    width: 82%;
   }
 }
 /*--------------------------------------------------------------
@@ -1310,17 +1260,10 @@ section,
 
 .stats h2 {
   font-family: var(--heading-font);
-  font-size: var(--font-48);
+  font-size: var(--fs-46-28);
   color: var(--accent-color);
   text-transform: uppercase;
 }
-
-@media (max-width: 767px) {
-  .stats h2 {
-    font-size: var(--font-sm-28);
-  }
-}
-
 /*--------------------------------------------------------------
 # Performers Section
 --------------------------------------------------------------*/
@@ -1337,7 +1280,7 @@ section,
 }
 .performers h2 {
   font-family: var(--heading-font);
-  font-size: var(--font-40);
+  font-size: var(--fs-46-28);
   color: var(--contrast-color);
   text-transform: uppercase;
   line-height: 1;
@@ -1357,7 +1300,7 @@ section,
 }
 .performers .content-col2 p,
 .performers .content-col1 p {
-  font-size: var(--font-22);
+  font-size: var(--fs-22-16);
   font-family: var(--default-font);
   color: var(--contrast-color);
 }
@@ -1376,13 +1319,6 @@ section,
     transform: translateX(0);
     z-index: 9;
   }
-  .performers h2 {
-    font-size: var(--font-sm-28);
-  }
-  .performers .content-col2 p,
-  .performers .content-col1 p {
-    font-size: var(--font-sm-16);
-  }
 }
 
 /*--------------------------------------------------------------
@@ -1400,13 +1336,13 @@ section,
 }
 .brands h2 {
   font-family: var(--heading-font);
-  font-size: var(--font-40);
+  font-size: var(--fs-46-28);
   color: var(--contrast-color);
   text-transform: uppercase;
   line-height: 1;
 }
 .brands p {
-  font-size: var(--font-14);
+  font-size: var(--fs-14-12);
   font-family: var(--default-font);
   color: var(--contrast-color);
 }
@@ -1417,7 +1353,6 @@ section,
   background-size: cover;
   position: absolute;
   top: 50%;
-
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
 }
@@ -1426,12 +1361,6 @@ section,
     left: inherit;
     right: 40px;
     transform: translateX(0);
-  }
-  .brands h2 {
-    font-size: var(--font-sm-28);
-  }
-  .brands p {
-    font-size: var(--font-sm-14);
   }
 }
 /*--------------------------------------------------------------
@@ -1511,7 +1440,7 @@ section,
   background-position: center;
   background-size: cover;
   font-family: var(--default-font);
-  font-size: var(--font-22);
+  font-size: var(--fs-22-16);
   color: var(--contrast-color);
   width: 75%;
   margin: auto;
@@ -1530,13 +1459,6 @@ section,
 .box4 {
   background-image: url(../img/earning4.png);
 }
-
-@media (max-width: 768px) {
-  .earning .box-content {
-    font-size: var(--font-sm-16);
-  }
-}
-
 /*--------------------------------------------------------------
 # Professional Section
 --------------------------------------------------------------*/
@@ -1582,18 +1504,18 @@ section,
 .forge h6 {
   font-family: var(--heading-font);
   color: var(--accent-color);
-  font-size: var(--font-28);
+  font-size: var(--fs-28-18);
   line-height: 1;
   text-transform: uppercase;
 }
 .forge p {
   font-family: var(--default-font);
   color: var(--contrast-color);
-  font-size: 16px;
+  font-size: var(--fs-16-12);
   line-height: 1;
 }
 .forge p.lead {
-  font-size: 22px;
+  font-size: var(--fs-22-16);
   line-height: 1;
 }
 .forge-box {
@@ -1631,21 +1553,7 @@ section,
   height: 100%;
   opacity: 1;
 }
-@media (max-width: 768px) {
-  .forge h2 {
-    font-size: var(--font-sm-28);
-  }
-  .forge h6 {
-    font-size: var(--font-sm-18);
-  }
-  .forge p {
-    font-size: var(--font-sm-12);
-    margin-bottom: 0;
-  }
-  .forge p.lead {
-    font-size: var(--font-sm-16);
-  }
-}
+
 /*--------------------------------------------------------------
 # Portfolio Section
 --------------------------------------------------------------*/
@@ -1667,25 +1575,15 @@ section,
 .portfolio h2 {
   font-family: var(--heading-font);
   color: var(--contrast-color);
-  font-size: var(--font-46);
+  font-size: var(--fs-46-28);
   line-height: 1;
   text-transform: uppercase;
 }
 .portfolio p {
   font-family: var(--default-font);
   color: var(--contrast-color);
-  font-size: var(--font-16);
+  font-size: var(--fs-16-12);
   line-height: 1;
-}
-
-@media (max-width: 768px) {
-  .portfolio h2 {
-    font-size: var(--font-sm-28);
-  }
-  .portfolio p {
-    font-size: var(--font-sm-12);
-    margin-bottom: 0;
-  }
 }
 
 /*--------------------------------------------------------------
@@ -1709,7 +1607,7 @@ section,
 .team-support h2 {
   font-family: var(--heading-font);
   color: var(--accent-color);
-  font-size: var(--font-46);
+  font-size: var(--fs-46-28);
   line-height: 1;
   text-transform: uppercase;
   font-weight: 700;
@@ -1717,18 +1615,8 @@ section,
 .team-support p {
   font-family: var(--default-font);
   color: var(--contrast-color);
-  font-size: var(--font-16);
+  font-size: var(--fs-16-12);
   line-height: 1;
-}
-
-@media (max-width: 768px) {
-  .team-support h2 {
-    font-size: var(--font-sm-28);
-  }
-  .team-support p {
-    font-size: var(--font-sm-12);
-    margin-bottom: 0;
-  }
 }
 
 /*--------------------------------------------------------------
@@ -1744,7 +1632,7 @@ section,
 .league h2 {
   font-family: var(--heading-font);
   color: var(--contrast-color);
-  font-size: var(--font-46);
+  font-size: var(--fs-46-28);
   line-height: 1;
   text-transform: uppercase;
   margin-bottom: 3.125rem;
@@ -1753,14 +1641,14 @@ section,
 .league h6 {
   font-family: var(--heading-font);
   color: var(--accent-color);
-  font-size: var(--font-28);
+  font-size: var(--fs-28-18);
   line-height: 1;
   text-transform: uppercase;
 }
 .league p {
   font-family: var(--default-font);
   color: var(--contrast-color);
-  font-size: var(--font-16);
+  font-size: var(--fs-16-12);
   line-height: 1.375;
 }
 .league .box {
@@ -1803,21 +1691,6 @@ section,
   height: 100%;
   opacity: 1;
 }
-@media (max-width: 768px) {
-  .league h2 {
-    font-size: var(--font-sm-28);
-  }
-  .league h6 {
-    font-size: var(--font-sm-18);
-  }
-  .league p {
-    font-size: var(--font-sm-12);
-    margin-bottom: 0;
-  }
-  .league p.lead {
-    font-size: var(--font-sm-16);
-  }
-}
 @media (min-width: 768px) {
   .league.section{
     padding: 90px 0 135px
@@ -1838,14 +1711,14 @@ section,
 .life h2 {
   font-family: var(--heading-font);
   color: var(--contrast-color);
-  font-size: var(--font-46);
+  font-size: var(--fs-46-28);
   line-height: 1;
   text-transform: uppercase;
 }
 .life h6 {
   font-family: var(--default-font);
   color: var(--contrast-color);
-  font-size: var(--font-28);
+  font-size: var(--fs-28-18);
   line-height: 1;
   text-transform: uppercase;
 }
@@ -1854,7 +1727,7 @@ section,
   font-family: "Bebas Neue Pro", sans-serif;
   font-weight: 700;
   color: var(--contrast-color);
-  font-size: var(--font-46);
+  font-size: var(--fs-46-28);
   line-height: 1;
   text-transform: uppercase;
 }
@@ -1862,7 +1735,7 @@ section,
   font-family: "Bebas Neue Pro", sans-serif;
   font-weight: 700;
   color: var(--contrast-color);
-  font-size: var(--font-22);
+  font-size: var(--fs-22-18);
   line-height: 1.0909;
   text-transform: capitalize;
 }
@@ -1871,48 +1744,63 @@ section,
   border-left: 1px dotted var(--contrast-color);
 }
 
-@media (max-width: 768px) {
-  .life h2 {
-    font-size: var(--font-sm-28);
-  }
-  .life h6 {
-    font-size: var(--font-sm-18);
-    line-height: 1.5556;
-  }
-  .life h5 {
-    font-size: var(--font-sm-28);
-  }
-  .life p {
-    font-size: var(--font-sm-18);
-  }
-}
-
 /*--------------------------------------------------------------
 # ChiprWall 2 Section
 --------------------------------------------------------------*/
 .chiprwall .scroll-pane {
   gap: 10px;
+  height: 166px;
 }
 .chiprwall h2 {
   font-family: var(--heading-font);
-  font-size: var(--font-46);
+  font-size: var(--fs-46-28);
   color: var(--default-color);
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 23px;
 }
 
-@media (max-width: 768px) {
-  .chiprwall h2 {
-    font-size: var(--font-sm-28);
+.chiprwall .scroll-pane .item{
+  height: auto;
+  width: 166px;
+}
+
+.chiprwall .grid-image{
+  width: 166px;
+  height: 166px;
+}
+
+.grid-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.grid-item {
+  width: 100%;
+}
+
+
+
+.grid-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+@media (min-width: 768px) {
+  /* Tablet (md) and up */
+  .grid-item {
+    width: 166px;
   }
 }
+
 /*--------------------------------------------------------------
 # Testimonials Section
 --------------------------------------------------------------*/
 .testimonials h2 {
   font-family: var(--heading-font);
-  font-size: var(--font-46);
+  font-size: var(--fs-46-28);
   color: var(--accent-color);
   font-weight: 700;
   text-transform: uppercase;
@@ -1924,7 +1812,7 @@ section,
   padding: 2.25rem;
   display: flex;
   flex-flow: column;
-  align-items: center;
+  align-items: self-start;
   justify-content: space-between;
 }
 .testimonials .quote-content-footer {
@@ -1939,19 +1827,8 @@ section,
 }
 .testimonials .quote-content p {
   font-family: var(--default-font);
-  font-size: var(--font-22);
+  font-size: var(--fs-22-16);
 }
-
-@media (max-width: 768px) {
-  .testimonials h2 {
-    font-size: var(--font-sm-28);
-    margin-bottom: 16px;
-  }
-  .testimonials .quote-content p {
-    font-size: var(--font-sm-16);
-  }
-}
-
 /*--------------------------------------------------------------
 # Success Stories Section
 --------------------------------------------------------------*/
@@ -1967,16 +1844,21 @@ section,
   margin-left: 0px;
   align-items: stretch;
 }
-.stories .scroll-pane .item {
-  width: 320px;
-  height: 380px;
+.stories .item {
+  width: calc(100% / 3);
   position: relative;
+  border-top-left-radius: 30px;
+  transition: all 0.5s ease-in-out;
+  overflow: hidden;
+}
+.stories .item img{
+  object-fit: cover;
 }
 
-.stories .scroll-pane .img-footer {
+.stories .img-footer {
   padding: 30px 40px;
   background-color: var(--default-color);
-  height: 100%;
+  min-height: 144px;
 }
 .stories .img-footer h6 {
   font-size: 28px;
@@ -1998,7 +1880,6 @@ section,
   height: 100%;
   padding: 20px;
   transform: translateY(100%);
-  border-bottom-right-radius: 20px;
   background-color: var(--accent-color);
   transition: transform 0.5s ease, opacity 0.7s ease;
   display: flex;
@@ -2008,10 +1889,20 @@ section,
   line-height: clamp(16px, calc(-0.93vw + 27.91px), 24px);
   color: var(--contrast-color);
 }
+.stories .item:hover{
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 30px;
+}
 
 .stories .item:hover .back {
   transform: translateY(0);
   opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .stories .item {
+    width: 91%;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -2042,7 +1933,7 @@ section,
   line-height: 100%;
   color: var(--contrast-color);
   font-family: var(--inter-font);
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
 }
 .performance h2 {
   font-size: clamp(28px, 2.08vw + 19.26px, 46px);
@@ -2064,8 +1955,13 @@ section,
     width: 28px;
     margin-bottom: 8px;
   }
+  
 }
-
+@media(min-width : 768px){
+  .performance p{
+    white-space: nowrap;
+  }
+}
 /*--------------------------------------------------------------
 # Success Section
 --------------------------------------------------------------*/
@@ -2193,11 +2089,12 @@ section,
 .role-win h3 {
   font-family: var(--heading-font);
   color: var(--accent-color);
-  font-size: clamp(28px, 2.08vw + 19.26px, 46px);
+  font-size: var(--fs-28-18);
   font-weight: 700;
   border-bottom: 1px dotted var(--contrast-color);
   padding-bottom: 16px;
   margin-bottom: 16px;
+  margin-top: 16px
 }
 
 .role-win ul {
@@ -2213,7 +2110,7 @@ section,
   background-size: 16px 16px; /* adjust as needed */
   margin-bottom: 10px;
   color: var(--contrast-color);
-  font-size: clamp(12px, calc(0.465vw + 10.05px), 16px);
+  font-size: var(--fs-16-12);
   line-height: 100%;
 }
 
@@ -2295,6 +2192,10 @@ section,
   line-height: 1.333;
   font-weight: 700;
 }
+.role-calculator .card{
+  padding: 40px;
+  height: 100%;
+}
 
 .role-calculator .card p {
   font-size: clamp(12px, 1.25vw + 0.25rem, 14px);
@@ -2312,11 +2213,15 @@ section,
   font-size: clamp(18px, 1.5vw + 1rem, 22px);
   line-height: 24px;
   color: var(--default-color);
+  margin-top: 0.5rem;
 }
 .role-calculator .card h2 {
   font-size: clamp(26px, 1.5vw + 1rem, 28px);
   line-height: clamp(24px, 1.2vw + 1rem, 28px);
   color: var(--accent-color);
+}
+.role-calculator .border-dotted-b{
+  border-bottom: 1px dotted #9999A0;
 }
 
 .form-range::-webkit-slider-thumb {
@@ -2373,6 +2278,12 @@ section,
   border-bottom: 1px dotted var(--default-color);
   font-size: 12px;
   padding-left: 0px;
+}
+.apply-form .form-control.is-invalid{
+  border-bottom: 1px dotted #dc3545;
+}
+.invalid-feedback{
+  font-size: var(--fs-12);
 }
 #datepicker-inline .datepicker-inline {
   width: 350px;
@@ -2446,11 +2357,17 @@ section,
 .apply-form .time-footer li:nth-child(3) {
   background-image: url("../img/selected.svg");
 }
+.apply-form .content-wrap{
+  width: 70%;
+}
 
 .apply-form p {
   font-size: clamp(12px, calc(0.98vw + 7.88px), 22px);
   line-height: 100%;
   text-transform: capitalize;
+  font-family: (var(--default-font));
+  font-weight: 400;
+
 }
 .scheduled-hero.section {
   background-image: url(../img/scheduled-hero-bg.png);
@@ -2490,12 +2407,18 @@ section,
   margin-bottom: 0;
   color: var(--contrast-color);
 }
+
+.quick-links .p{
+  font-size: 12px;
+  margin-bottom: 0;
+  color: var(--contrast-color);
+}
 .quick-links .social .img {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
-  margin: 21px 0;
+  margin: 5px 0;
 }
 
 .quick-links .quick-links-content p {
@@ -2518,4 +2441,9 @@ section,
 }
 .quick-links .quick-links-content ul li:last-child {
   border-bottom: 1px dotted var(--contrast-color);
+}
+@media (max-width: 768px) {
+  .apply-form .content-wrap{
+    width: 100%;
+  }
 }

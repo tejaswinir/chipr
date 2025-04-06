@@ -60,16 +60,16 @@
   
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li data-aos="fade-up" data-aos-delay="250">
+          <li data-aos="fade-down" data-aos-delay="250">
             <a href="careers.html">Careers</a>
           </li>
-          <li data-aos="fade-up" data-aos-delay="300">
+          <li data-aos="fade-down" data-aos-delay="300">
             <a href="why-chipr.html">Why Chipr</a>
           </li>
-          <li data-aos="fade-up" data-aos-delay="350">
+          <li data-aos="fade-down" data-aos-delay="350">
             <a href="success-stories.html">Success Stories</a>
           </li>
-          <li data-aos="fade-up" data-aos-delay="400">
+          <li data-aos="fade-down" data-aos-delay="400">
             <a href="role-highlights.html">Role Highlights</a>
           </li>
           <li data-aos="zoom-in" data-aos-delay="450">
@@ -272,9 +272,11 @@
                     data-aos="fade-up"
                     data-aos-delay="200"
                     data-aos-anchor-placement="top-bottom"
+                    class="recommendedBy"
                   >
-                    ALEX <br />
+                   <span class="text-white"> ALEX <br />
                     JOHNSON
+                  </span>
                   </h1>
                 </div>
                 <div class="hero-subtitle-wrap">
@@ -424,9 +426,10 @@
                 </svg>
               </div>
 
-              <h1 data-aos="fade-up" data-aos-delay="150">
-                ALEX <br />
-                JOHNSON
+              <h1 class="recommendedBy" data-aos="fade-up" data-aos-delay="150">
+                <span class="text-white"> ALEX <br />
+                  JOHNSON
+                </span>
               </h1>
               <div>
                 <h6 data-aos="fade-up" data-aos-delay="200">
@@ -511,7 +514,6 @@
                         type="text"
                         class="form-control text-accent"
                         id="recommendedBy"
-                        value="Alex Johnson"
                         data-aos="fade-up"
                         data-aos-delay="200"
                       />
@@ -522,7 +524,7 @@
                     data-aos="fade-up"
                     data-aos-delay="230"
                   >
-                    <button class="cta-btn cta-btn-w">
+                    <button type="button" id="joinOurTeam" class="cta-btn cta-btn-w" disabled>
                       Join our team 
                     </button>
                   </div>
@@ -532,7 +534,21 @@
           </div>
         </div>
       </section>
-      <!-- /Hero Section -->
+      <div class="modal fade" id="noNameModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="noNameModalLabel">Alert</h1>
+            </div>
+            <div class="modal-body">
+             The Recommended Name is not available. Please contact admin or the person who refferred you.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-primary" id="closeModal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer id="footer" class="footer dark-background" data-aos="fade-up" data-aos-delay="100" data-aos-anchor-placement="top-bottom">
@@ -544,25 +560,25 @@
                 src="./assets/img/logo.svg"
                 alt="chipr"
                 data-aos="fade-up"
-                data-aos-delay="250"
+                data-aos-delay="200"
               />
             </div>
             <div class="col-8">
               <nav class="footer-navmenu">
                 <ul>
-                  <li data-aos="fade-up" data-aos-delay="100">
+                  <li data-aos="fade-up" data-aos-delay="100" data-aos-anchor-placement="center-left">
                     <a href="/careers">Careers</a>
                   </li>
-                  <li data-aos="fade-up" data-aos-delay="150">
+                  <li data-aos="fade-up" data-aos-delay="180">
                     <a href="/why-chipr">Why Chipr</a>
                   </li>
-                  <li data-aos="fade-up" data-aos-delay="200">
+                  <li data-aos="fade-up" data-aos-delay="260">
                     <a href="/success-stories">Success Stories</a>
                   </li>
-                  <li data-aos="fade-up" data-aos-delay="250">
+                  <li data-aos="fade-up" data-aos-delay="340">
                     <a href="/role-highlights">Role Highlights</a>
                   </li>
-                  <li data-aos="fade-up" data-aos-delay="300">
+                  <li data-aos="fade-up" data-aos-delay="420">
                     <a class="cta-btn cta-btn-w" href="apply-now.html">Apply Now</a>
                   </li>
                 </ul>
@@ -572,20 +588,23 @@
               <div class="social-links d-flex justify-content-end">
                 <a
                   href="https://www.facebook.com/profile.php?id=61559278246860"
-                  data-aos="zoom-in-left"
-                  data-aos-delay="260"
+                  data-aos="fade-up"
+                  data-aos-delay="100"
+                  target="_blank"
                   ><i class="bi bi-facebook"></i
                 ></a>
                 <a
                   href="https://www.instagram.com/chipr.sales/"
-                  data-aos="zoom-in-left"
-                  data-aos-delay="270"
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                  target="_blank"
                   ><i class="bi bi-instagram"></i
                 ></a>
                 <a
                   href="https://www.linkedin.com/company/chiprhomesolutions/"
-                  data-aos="zoom-in-left"
-                  data-aos-delay="280"
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                  target="_blank"
                   ><i class="bi bi-linkedin"></i
                 ></a>
               </div>
@@ -610,7 +629,7 @@
             </div>
             <div class="col-6" style="text-align: right">
               <a
-                class="cta-btn"
+                class="cta-btn cta-btn-w"
                 href="apply-now.html"
                 data-aos="fade-up"
                 data-aos-delay="270"
@@ -639,7 +658,8 @@
         </div>
         <div class="container copyright text-left">
           <div class="row">
-            <div class="col">
+            <div class="col"   data-aos="fade-up"
+            data-aos-delay="100">
               <p>
                 © <span>2025</span> <span class="px-1 sitename">Chipr</span>
               </p>
@@ -648,20 +668,23 @@
               <div class="social-links d-flex justify-content-end">
                 <a
                   href="https://www.facebook.com/profile.php?id=61559278246860"
+                  target="_blank"
                   data-aos="fade-up"
-                  data-aos-delay="260"
+                  data-aos-delay="160"
                   ><i class="bi bi-facebook"></i
                 ></a>
                 <a
                   href="https://www.instagram.com/chipr.sales/"
                   data-aos="fade-up"
-                  data-aos-delay="270"
+                  target="_blank"
+                  data-aos-delay="170"
                   ><i class="bi bi-instagram"></i
                 ></a>
                 <a
                   href="https://www.linkedin.com/company/chiprhomesolutions/"
                   data-aos="fade-up"
-                  data-aos-delay="280"
+                  data-aos-delay="180"
+                  target="_blank"
                   ><i class="bi bi-linkedin"></i
                 ></a>
               </div>
@@ -700,7 +723,7 @@
 
           const city = data.address.city;
 
-          console.log("User City:", city);
+          localStorage.setItem("location", city);
           document.getElementById("city").value = city;
         },
         function (error) {
@@ -708,6 +731,57 @@
           console.error("Geolocation error:", error.message);
         }
       );
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get('code'); 
+      const preloader = document.getElementById('preloader');
+
+  fetch(`https://core-services-api-e3a0bnafdsdbazb2.westus-01.azurewebsites.net/api/employee/${code}`, {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  })
+  .then(response => {
+    if (response.status === 200) {
+      return response.json(); // Proceed to parse JSON
+    } else {
+      $('#noNameModal').modal('show'); 
+      preloader.remove();
+    }
+  })
+  .then(data => {
+    localStorage.setItem('referralId', data.employeeId)
+   $('#recommendedBy').prop('value', data.name)
+   $('.recommendedBy').text(data.name)
+   preloader.remove();
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
+  $('#yourName').on('input', function () {
+    const inputValue = $(this).val().trim();
+    $('#joinOurTeam').prop('disabled', inputValue === '');
+  });
+
+  $('#joinOurTeam').on('click', function(){
+    let val = $('#yourName').val()
+    let recommendedByName = $('#recommendedBy').val()
+    localStorage.setItem('username', val)
+    localStorage.setItem('recommendedBy', recommendedByName)
+   
+    window.location.href = 'careers.html'
+  })
+  $('#closeModal').on('click', function() {
+    window.location.href = 'careers.html'
+  })
+
+  function checkJoinOurTeam () {
+    const inputValue = $('#yourName').val();
+    $('#joinOurTeam').prop('disabled', inputValue === '');
+  }
+
+  checkJoinOurTeam ()
     </script>
   </body>
 </html>
