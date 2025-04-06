@@ -1197,7 +1197,7 @@ section,
 # About Section
 --------------------------------------------------------------*/
 .career {
-  padding: 160px 0 80px;
+  padding: 100px 0 80px;
   display: flex;
   align-items: center;
 }
@@ -1248,10 +1248,7 @@ section,
 
 @media (min-width: 767px){
   .career .content-wrap{
-    width: 72%;
-  }
-  .career .content-wrap2{
-    width: 54%;
+    width: 82%;
   }
 }
 /*--------------------------------------------------------------
@@ -2410,12 +2407,18 @@ section,
   margin-bottom: 0;
   color: var(--contrast-color);
 }
+
+.quick-links .p{
+  font-size: 12px;
+  margin-bottom: 0;
+  color: var(--contrast-color);
+}
 .quick-links .social .img {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
-  margin: 21px 0;
+  margin: 5px 0;
 }
 
 .quick-links .quick-links-content p {
