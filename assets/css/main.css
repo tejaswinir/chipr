@@ -386,6 +386,12 @@ button.cta-btn-b:disabled {
 .toast.show{
   z-index: 999;
 }
+
+@media (max-width: 768px) {
+  .logo-bg svg  {
+    width: 100%;
+  }
+}
 /*--------------------------------------------------------------
 # Global Header
 --------------------------------------------------------------*/
@@ -1157,9 +1163,9 @@ section,
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 0;
+    top: 6px;
     bottom: 0;
-    right: 0;
+    right: 13px;
     width: 75%;
     height: 100%;
   }
@@ -1374,6 +1380,7 @@ section,
 }
 .clients .cta-btn {
   color: var(--default-color);
+  z-index: 9;
 }
 .clients h2,
 .clients .h2 {
@@ -1484,7 +1491,16 @@ section,
   font-family: var(--default-font);
   font-size: clamp(12px, 2vw, 16px);
   color: var(--contrast-color);
-  line-height: 100%;
+  line-height: normal;
+}
+
+@media (max-width: 768px) {
+  .professional.section{
+    background-position: bottom right;
+  }
+  .professional .custom-container{
+    z-index: 1;
+  }
 }
 /*--------------------------------------------------------------
 # Professional Section
@@ -1497,7 +1513,7 @@ section,
 .forge h2 {
   font-family: var(--heading-font);
   color: var(--contrast-color);
-  font-size: 28px;
+  font-size: clamp(28px, 4.5vw, 46px);
   line-height: 1;
   text-transform: uppercase;
 }
@@ -1516,7 +1532,7 @@ section,
 }
 .forge p.lead {
   font-size: var(--fs-22-16);
-  line-height: 1;
+  line-height: normal;
 }
 .forge-box {
   width: 100%;
@@ -1528,6 +1544,7 @@ section,
   overflow: hidden;
   border-bottom-right-radius: 40px;
   transition: background-size 0.7s ease, max-height 0.7s ease, padding 0.3s ease;
+  margin-top: 24px;
 }
 .forge-box .arrow-down-circle {
   width: 32px;
@@ -1583,7 +1600,13 @@ section,
   font-family: var(--default-font);
   color: var(--contrast-color);
   font-size: var(--fs-16-12);
-  line-height: 1;
+  line-height: normal;
+}
+
+@media (max-width: 768px) {
+  .portfolio .content-wrap {
+    padding: 25px;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -1616,8 +1639,15 @@ section,
   font-family: var(--default-font);
   color: var(--contrast-color);
   font-size: var(--fs-16-12);
-  line-height: 1;
+  line-height: normal;
 }
+
+@media (max-width: 768px) {
+  .team-support .content-wrap {
+    padding: 25px;
+  }
+}
+
 
 /*--------------------------------------------------------------
 # League Section
@@ -1677,7 +1707,7 @@ section,
   margin-top: 12px;
 }
 .league-box.active {
-  max-height: 520px;
+  max-height: 550px;
   background-size: cover;
   padding: 30px;
 }
@@ -1735,7 +1765,7 @@ section,
   font-family: "Bebas Neue Pro", sans-serif;
   font-weight: 700;
   color: var(--contrast-color);
-  font-size: var(--fs-22-18);
+  font-size: var(--fs-28-18);
   line-height: 1.0909;
   text-transform: capitalize;
 }
@@ -1773,7 +1803,7 @@ section,
 .grid-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: start;
   gap: 10px;
 }
 
@@ -1814,6 +1844,7 @@ section,
   flex-flow: column;
   align-items: self-start;
   justify-content: space-between;
+  width: 100%;
 }
 .testimonials .quote-content-footer {
   text-align: left;
@@ -1829,6 +1860,7 @@ section,
   font-family: var(--default-font);
   font-size: var(--fs-22-16);
 }
+
 /*--------------------------------------------------------------
 # Success Stories Section
 --------------------------------------------------------------*/
@@ -2112,6 +2144,7 @@ section,
   color: var(--contrast-color);
   font-size: var(--fs-16-12);
   line-height: 100%;
+  font-weight: 500;
 }
 
 .role-calculator.section {
@@ -2124,7 +2157,7 @@ section,
   font-family: var(--heading-font);
   color: var(--contrast-color);
   font-size: clamp(28px, 2.08vw + 19.26px, 46px);
-  margin-bottom: 16px;
+  margin: 16px 0;
   text-transform: uppercase;
   font-weight: 700;
 }

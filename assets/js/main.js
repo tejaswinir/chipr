@@ -13,7 +13,7 @@ var token = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLC
     const path = window.location.pathname.toLowerCase();
 
     // Only remove preloader if NOT on index or careers pages
-    if (!path.includes('index') && !path.includes('careers') && !path.includes('scheduled')) {
+    if (!path.includes('referral') && !path.includes('home') && !path.includes('application-confirmation')) {
       removePreloader();
     }
   });
@@ -114,13 +114,11 @@ var token = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLC
 
   /** Compensation Calculator **/
   function initCompensationCalculator() {
-    if (typeof $ === "undefined") return;
-
     function calculateTier(units) {
-      if (units >= 80) return "Platinum";
-      if (units >= 40) return "Gold";
-      if (units >= 20) return "Silver";
-      return "Bronze";
+      if (units >= 80) return 'Platinum';
+      if (units >= 40) return 'Gold';
+      if (units >= 20) return 'Silver';
+      return 'Bronze';
     }
 
     function calculateRate(tier) {
@@ -129,83 +127,66 @@ var token = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLC
         Bronze: 0,
         Silver: 30,
         Gold: 80,
-        Platinum: 105,
+        Platinum: 105
       };
       return base + (spiffMap[tier] || 0);
     }
 
-    function calculateRecruitBonus(recruits, avgSales, personalUnits) {
-      if (personalUnits < 15) return 0;
+    function calculateRecruitBonus(recruits, avgSales, units) {
+      if (units < 15) return 0;
       return recruits * avgSales * 20;
     }
 
-    function updateDisplay() {
-      const personalUnits = Number($('#units').val());
-      const numRecruits = personalUnits >= 15 ? Number($('#recruits').val()) : 0;
-      const avgSales = personalUnits >= 15 ? Number($('#avgSales').val()) : 0;
-
-      const tier = calculateTier(personalUnits);
-      const rate = calculateRate(tier);
-      const personalPay = rate * personalUnits;
-      const recruitBonus = calculateRecruitBonus(numRecruits, avgSales, personalUnits);
-      const totalComp = personalPay + recruitBonus;
-
-      $('#unitsValue').text(personalUnits);
-      $('#recruitsValue').text(numRecruits);
-      $('#avgSalesValue').text(avgSales);
-
-      $('#tier').text(tier);
-      $('#rate').text(rate.toFixed(2));
-      $('#personalPay').text(personalPay.toFixed(2));
-      $('#recruitBonus').text(recruitBonus.toFixed(2));
-      $('#totalComp').text(totalComp.toFixed(2));
-
-      $('#recruits').prop('disabled', personalUnits < 15);
-      $('#avgSales').prop('disabled', personalUnits < 15);
-
-
-      // Enable or disable radio buttons based on tier
-      ['Bronze', 'Silver', 'Gold'].forEach(t => {
-        let id = `radio-${t.toLowerCase()}`
-        const radio = document.getElementById(id);
-        if (radio) {
-          let isDisabled = t !== tier
-          let isChecked = t === tier
-          radio.disabled = isDisabled;
-          radio.checked = isChecked;
+    function updateTierRadios(tier) {
+      ['bronze', 'silver', 'gold'].forEach(t => {
+        const radio = $(`#radio-${t}`);
+        if (radio.length) {
+          radio.prop('checked', t === tier.toLowerCase());
+          radio.prop('disabled', t !== tier.toLowerCase());
         }
       });
-
-      
-
-    $('#units, #recruits, #avgSales').on('input', updateDisplay);
-    updateDisplay();
-  }
-
-  $('.btn-action-add').off('click').on('click', function () {
-    debugger
-    const id = $(this).data('id');
-    const input = $('#' + id);
-    let value = parseInt(input.val());
-    if (value < parseInt(input.attr('max'))) {
-      input.val(value + 5).trigger('input');
-      updateDisplay();
-      
     }
-    if(id === 'units' && personalUnits < 15){
-     
-    }
-  });
 
-  $('.btn-action-min').off('click').on('click', function () {
-    const id = $(this).data('id');
-    const input = $('#' + id);
-    let value = parseInt(input.val());
-    if (value > parseInt(input.attr('min'))) {
-      input.val(value - 5).trigger('input');
-      updateDisplay();
+    function updateUI() {
+      const units = parseInt($('#units').val()) || 0;
+      const recruits = parseInt($('#recruits').val()) || 0;
+      const avgSales = parseInt($('#avgSales').val()) || 0;
+
+      $('#unitsValue').text(units);
+      $('#recruitsValue').text(recruits);
+      $('#avgSalesValue').text(avgSales);
+
+      const tier = calculateTier(units);
+      const rate = calculateRate(tier);
+      updateTierRadios(tier);
+
+      const personalPay = rate * units;
+      const recruitBonus = calculateRecruitBonus(recruits, avgSales, units);
+      const totalComp = personalPay + recruitBonus;
+
+      $('#personalPay').text(personalPay.toFixed(2));
+      $('#totalComp').text(totalComp.toFixed(2));
+
+      const enable = units >= 15;
+      $('#recruits, #avgSales').prop('disabled', !enable);
+      $('#recruits-btn-min, #recruits-btn-add, #avgSales-btn-min, #avgSales-btn-add').prop('disabled', !enable);
     }
-  });
+
+    // Button click handlers
+    $('.btn-action-add, .btn-action-min').on('click', function () {
+      const id = $(this).attr('id').split('-')[0]; // e.g., units-btn-min => 'units'
+      const input = $('#' + id);
+      const currentVal = parseInt(input.val()) || 0;
+      const step = id === 'avgSales' ? 1 : 1; // Modify if different step needed
+      const change = $(this).hasClass('btn-action-add') ? step : -step;
+      const newVal = Math.max(parseInt(input.attr('min') || 0), Math.min(parseInt(input.attr('max') || 100), currentVal + change));
+      input.val(newVal).trigger('input');
+    });
+
+    // Slider input handlers
+    $('#units, #recruits, #avgSales').on('input', updateUI);
+
+    updateUI(); 
 }
 
 
@@ -349,6 +330,7 @@ var token = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLC
   );
  
   const logoPaths = document.querySelectorAll(".chipr-logo path");
+  if(logoPaths.length > 0){
   const tl2 = gsap.timeline({ repeat: -1, repeatDelay: 0.5 });
   // 1. Draw strokes
   tl2.to(logoPaths, {
@@ -384,8 +366,9 @@ var token = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLC
     },
     "+=0.5"
   );
+}
   let logoanimation = document.getElementById("logo-animation")
-  if(logoanimation !==  undefined){
-  observer.observe(document.getElementById("logo-animation"));
+  if(logoanimation instanceof Element){
+    observer.observe(logoanimation);
   }
 })();
