@@ -732,7 +732,7 @@
         }
       );
       const urlParams = new URLSearchParams(window.location.search);
-      const code = urlParams.get('eid'); 
+      const code = urlParams.get('rep'); 
       const preloader = document.getElementById('preloader');
 
   fetch(`https://core-services-api-e3a0bnafdsdbazb2.westus-01.azurewebsites.net/api/employee/${code}`, {
@@ -745,8 +745,13 @@
     if (response.status === 200) {
       return response.json(); // Proceed to parse JSON
     } else {
+      if(response.status === 500){
+        window.alert('Something went wrong. Please contact admin')
+      }
+      else{
       $('#noNameModal').modal('show'); 
       preloader.remove();
+      }
     }
   })
   .then(data => {
