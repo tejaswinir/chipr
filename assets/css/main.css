@@ -1883,6 +1883,18 @@ section,
   transition: all 0.5s ease-in-out;
   overflow: hidden;
 }
+.stories .item .img-wrapper{
+  width: clamp(220px, 25.7vw, 370px);  /* 220px at 420px screen, 370px at 1440px */
+  height: clamp(170px, 17.4vw, 250px); 
+  position: relative;
+}
+
+.stories .item .absolute-item{
+  position: absolute;
+  top:0;
+  width: 100%;
+  height: 100%;
+}
 .stories .item img{
   object-fit: cover;
 }
@@ -2065,7 +2077,7 @@ section,
 --------------------------------------------------------------*/
 
 .role-hero h1 {
-  font-size: clamp(28px, 2.08vw + 19.26px, 46px);
+  font-size: var(--fs-46-28);
   line-height: 1;
   font-family: var(--heading-font);
   color: var(--accent-color);
@@ -2075,7 +2087,7 @@ section,
 .role-timeline h2 {
   font-family: var(--heading-font);
   color: var(--accent-color);
-  font-size: clamp(28px, 2.08vw + 19.26px, 46px);
+  font-size: var(--fs-46-28);
   margin-bottom: 16px;
   text-transform: uppercase;
   font-weight: 700;
@@ -2092,14 +2104,14 @@ section,
 }
 
 .timeline-content h3 {
-  font-size: clamp(18px, calc(0.392vw + 16.35px), 22px);
+  font-size: var(--fs-22-18);
   line-height: clamp(18px, calc(0.98vw + 13.88px), 28px);
   font-family: var(--heading-font);
   color: var(--default-color);
   margin-top: 10px;
 }
 .timeline-content p {
-  font-size: clamp(12px, calc(-0.232vw + 14.97px), 14px);
+  font-size: var(--fs-14-12);
   line-height: clamp(12px, calc(-0.697vw + 20.93px), 18px);
 }
 
@@ -2113,7 +2125,7 @@ section,
 .role-win h2 {
   font-family: var(--heading-font);
   color: var(--contrast-color);
-  font-size: clamp(28px, 2.08vw + 19.26px, 46px);
+  font-size: var(--fs-46-28);
   margin-bottom: 16px;
   text-transform: uppercase;
   font-weight: 700;
@@ -2156,7 +2168,7 @@ section,
 .role-calculator h2 {
   font-family: var(--heading-font);
   color: var(--contrast-color);
-  font-size: clamp(28px, 2.08vw + 19.26px, 46px);
+  font-size: var(--fs-46-28);
   margin: 16px 0;
   text-transform: uppercase;
   font-weight: 700;
@@ -2215,7 +2227,7 @@ section,
   color: var(--contrast-color);
 }
 .role-calculator .form-label {
-  font-size: clamp(12px, 1.25vw + 0.25rem, 14px);
+  font-size: var(--fs-14-12);
   line-height: 1.8;
   color: var(--contrast-color);
 }
@@ -2231,7 +2243,7 @@ section,
 }
 
 .role-calculator .card p {
-  font-size: clamp(12px, 1.25vw + 0.25rem, 14px);
+  font-size: var(--fs-14-12);
   line-height: 14px;
   color: var(--default-color);
   margin-bottom: 0px;
@@ -2243,13 +2255,13 @@ section,
   color: var(--default-color);
 }
 .role-calculator .card h3 {
-  font-size: clamp(18px, 1.5vw + 1rem, 22px);
+  font-size: var(--fs-22-18);
   line-height: 24px;
   color: var(--default-color);
   margin-top: 0.5rem;
 }
 .role-calculator .card h2 {
-  font-size: clamp(26px, 1.5vw + 1rem, 28px);
+  font-size: var(--fs-28);
   line-height: clamp(24px, 1.2vw + 1rem, 28px);
   color: var(--accent-color);
 }
@@ -2288,7 +2300,7 @@ section,
 --------------------------------------------------------------*/
 
 .apply-hero h1 {
-  font-size: clamp(28px, 2.08vw + 19.26px, 46px);
+  font-size: var(--fs-46-28);
   line-height: 1;
   font-family: var(--heading-font);
   color: var(--accent-color);
