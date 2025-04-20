@@ -1,5 +1,6 @@
 
 var token = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTc0MzQwNDIzOSwiaWF0IjoxNzQzNDA0MjM5fQ.Zq9Za-ap5kbXgBezl90lrBOJGTWjVt75n_q6hdo7ADE";
+var base_url = "https://core-services-api-e3a0bnafdsdbazb2.westus-01.azurewebsites.net/api";
 (function () {
   "use strict";
 
@@ -10,10 +11,11 @@ var token = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLC
     initAOS();
     initShowMoreButtons();
     initCompensationCalculator();
+    initSwiper();
     const path = window.location.pathname.toLowerCase();
 
     // Only remove preloader if NOT on index or careers pages
-    if (!path.includes('referral') && !path.includes('home') && !path.includes('application-confirmation')) {
+    if (!path.includes('referral') && !path.includes('index') && !path.includes('application-confirmation')) {
       removePreloader();
     }
   });
@@ -88,6 +90,22 @@ var token = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLC
       }
     });
   }
+
+  //swiper
+function initSwiper() {
+  document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
+    let config = JSON.parse(
+      swiperElement.querySelector(".swiper-config").innerHTML.trim()
+    );
+
+    if (swiperElement.classList.contains("swiper-tab")) {
+      initSwiperWithCustomPagination(swiperElement, config);
+    } else {
+      new Swiper(swiperElement, config);
+    }
+  });
+}
+
 
   /** Show More Buttons **/
   function initShowMoreButtons() {
@@ -191,6 +209,8 @@ var token = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLC
 
 
 
+
+
   /** Preloader Removal **/
   function removePreloader() {
     const preloader = document.getElementById('preloader');
@@ -239,64 +259,61 @@ var token = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLC
     },
   });
   const quotes = document.getElementById("quotes");
-  const typeTarget = document.getElementById("typeTarget");
-  const revealButton = document.getElementById("afterButton");
+const typeTarget = document.getElementById("typeTarget");
+const revealButton = document.getElementById("afterButton");
 
-  const lines = [
-    "From rookie to 15-person team lead in 8 months.",
-    "--",
-    { bold: "Jordan Martinez" },
-  ];
+const lines = [
+  "From rookie to 15-person team lead in 8 months.",
+  "--",
+  { bold: "Jordan Martinez" },
+];
 
-  let lineIndex = 0;
-  let charIndex = 0;
+let lineIndex = 0;
+let charIndex = 0;
+let cursor;
 
-  function typeNextChar() {
-    const currentLine = lines[lineIndex];
-    const isBold = typeof currentLine === "object";
+function typeNextChar() {
+  const currentLine = lines[lineIndex];
+  const isBold = typeof currentLine === "object";
 
-    if (!typeTarget.children[lineIndex]) {
-      const lineEl = document.createElement("div");
-      lineEl.innerHTML = isBold ? "<strong></strong>" : "";
-      typeTarget.appendChild(lineEl);
-    }
+  if (!typeTarget.children[lineIndex]) {
+    const lineEl = document.createElement("div");
+    lineEl.innerHTML = isBold ? "<strong></strong>" : "";
+    typeTarget.appendChild(lineEl);
+  }
 
-    const lineEl = typeTarget.children[lineIndex];
-    const targetEl = isBold ? lineEl.querySelector("strong") : lineEl;
-    const text = isBold ? currentLine.bold : currentLine;
+  const lineEl = typeTarget.children[lineIndex];
+  const targetEl = isBold ? lineEl.querySelector("strong") : lineEl;
+  const text = isBold ? currentLine.bold : currentLine;
 
-    targetEl.textContent += text[charIndex];
-    charIndex++;
+  targetEl.textContent += text[charIndex];
+  charIndex++;
 
-    if (charIndex < text.length) {
-      setTimeout(typeNextChar, 40);
+  if (charIndex < text.length) {
+    setTimeout(typeNextChar, 40);
+  } else {
+    lineIndex++;
+    charIndex = 0;
+    if (lineIndex < lines.length) {
+      setTimeout(typeNextChar, 400);
     } else {
-      lineIndex++;
-      charIndex = 0;
-      if (lineIndex < lines.length) {
-        setTimeout(typeNextChar, 400);
-      } else {
-        const cursor = document.createElement("span");
-        cursor.classList.add("cursor");
-        cursor.innerHTML = "|";
-        typeTarget.appendChild(cursor);
+      gsap.to(cursor, {
+        opacity: 0,
+        duration: 0.6,
+        onComplete: () => {
+          cursor.remove();
+        },
+      });
 
-        setTimeout(() => {
-          gsap.to(cursor, {
-            opacity: 0,
-            onComplete: () => cursor.remove(),
-          });
-        
-          gsap.to(revealButton, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power2.out",
-          });
-        }, 1000);
-      }
+      gsap.to(revealButton, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+      });
     }
   }
+}
 
   // ✅ Observer to trigger entire flow
   const observer = new IntersectionObserver(
