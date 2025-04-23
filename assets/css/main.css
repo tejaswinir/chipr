@@ -434,6 +434,25 @@ hr{
   object-fit: cover;
 }
 
+.img-border{
+  border-top-left-radius: 40px;
+}
+
+.svg-container {
+  position: absolute;
+  z-index: 9;
+  bottom: -1.5rem;
+  right: 5.75rem;
+  width: 90px;
+  height: 232px;
+}
+
+.svg-container .down-arrow{
+  width: 90px;
+  height: auto;
+  position: absolute;
+}
+
 @media (max-width: 768px) {
   .logo-bg svg  {
     width: 100%;
@@ -443,6 +462,9 @@ hr{
       right: 40px;
       transform: translateX(0);
       z-index: 9;
+    }
+    .svg-container{
+      right: -50px;
     }
 }
 /*--------------------------------------------------------------
@@ -1087,14 +1109,7 @@ section,
   flex-flow: column;
 }
 
-.hero .svg-container {
-  position: absolute;
-  z-index: 9;
-  bottom: -1.5rem;
-  right: 5.75rem;
-  width: 90px;
-  height: 232px;
-}
+
 .hero .video-form-container {
   width: 100%;
   border-top-left-radius: 40px;
@@ -1464,15 +1479,10 @@ section,
   font-family: var(--default-font);
   color: var(--contrast-color);
 }
-.brands .down-arrow {
-  width: 60px;
-  height: 155px;
-  background-image: url(../img/down-arrow-white.svg);
-  background-size: cover;
-  position: absolute;
-  top: 50%;
+.brands .down-arrow-wrap {
+  top: -43%;
   left: 50%;
-  transform: translateY(-50%) translateX(-50%);
+  transform: translateX(-50%);
 }
 @media (max-width: 767px) {
   .brands .down-arrow {
@@ -1673,7 +1683,7 @@ section,
   margin-top: 12px;
 }
 .forge-box.active {
-  max-height: 550px;
+  max-height: 750px;
   background-size: cover;
   padding: 30px;
 }
@@ -1837,7 +1847,7 @@ section,
   margin-top: 12px;
 }
 .league-box.active {
-  max-height: 550px;
+  max-height: 800px;
   background-size: cover;
   padding: 30px;
 }
@@ -2109,7 +2119,7 @@ section,
 
 .stories .img-footer p {
   font-size: var(--fs-18-16);
-  line-height: clamp(16px, calc(-0.93vw + 27.91px), 24px);
+  line-height: normal;
   color: var(--default-color);
   margin-bottom: 8px;
 }
@@ -2338,18 +2348,19 @@ section,
 }
 
 .role-timeline .timeline-content h3 {
-  font-size: var(--fs-22-18);
-  line-height: 18px;
+  font-size: 22px;
+  line-height: 26px;
   font-family: var(--heading-font);
   color: var(--default-color);
   margin-top: 10px;
+  font-weight: 600;
 }
 
 .role-timeline .timeline-content h6 {
   font-size: var(--fs-16);
   line-height: normal;
   color: var(--default-color);
-  font-weight: 500;
+  font-weight: 700;
   font-family: var(--default-font);
   margin-bottom: 0;
 }
