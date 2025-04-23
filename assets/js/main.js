@@ -263,9 +263,9 @@ const typeTarget = document.getElementById("typeTarget");
 const revealButton = document.getElementById("afterButton");
 
 const lines = [
-  "From rookie to 15-person team lead in 8 months.",
+  "This isn’t a company that just talks about having a great culture and talks about investing in and caring about their people and talks about being awesome human beings. This is a company that is actually living, walking, talking, breathing, eating, sleeping that.",
   "--",
-  { bold: "Jordan Martinez" },
+  { bold: "Terrance" },
 ];
 
 let lineIndex = 0;

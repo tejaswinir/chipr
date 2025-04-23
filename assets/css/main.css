@@ -416,10 +416,34 @@ hr{
   opacity: 1;
 }
 
+.down-arrow-wrap {
+  width: 60px;
+  height: auto;
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+.video-wrap {
+  border-top-left-radius: 40px;
+  overflow: hidden;
+}
+.video-wrap video {
+  width: 100%;
+  object-fit: cover;
+}
+
 @media (max-width: 768px) {
   .logo-bg svg  {
     width: 100%;
   }
+ .down-arrow-wrap {
+      left: inherit;
+      right: 40px;
+      transform: translateX(0);
+      z-index: 9;
+    }
 }
 /*--------------------------------------------------------------
 # Global Header
@@ -1258,9 +1282,9 @@ section,
 .career .h1 {
   font-family: var(--heading-font);
   font-weight: 700;
-  font-size: var(--fs-68-38);
+  font-size: var(--fs-60-80);
+  line-height: clamp(58px, 4.2vw, 60px);
   color: var(--accent-color);
-  line-height: 0.8824;
   text-transform: uppercase;
 }
 .career .h1.default-text-color {
@@ -1381,9 +1405,9 @@ section,
 .why-chipr .h1 {
   font-family: var(--heading-font);
   font-weight: 700;
-  font-size: var(--fs-68-38);
+  font-size: var(--fs-60-80);
+  line-height: clamp(58px, 4.2vw, 60px);
   color: var(--accent-color);
-  line-height: 0.8824;
   text-transform: uppercase;
 }
 .why-chipr .h1.default-text-color {
@@ -1402,6 +1426,9 @@ section,
   font-family: var(--default-font);
   font-size: var(--fs-20-12);
   margin-top: 10px;
+}
+.why-chipr .img-border{
+  border-top-left-radius: 40px;
 }
 
 @media (max-width: 767px) {
@@ -1510,7 +1537,7 @@ section,
   display: flex;
   align-items: center;
 }
-.earning .scroll-pane .item {
+.earning .item {
   width: 200px;
 }
 .earning h2 {
@@ -1586,6 +1613,7 @@ section,
 @media (max-width: 768px) {
   .professional.section{
     background-position: bottom right;
+    overflow: visible;
   }
   .professional .custom-container{
     z-index: 1;
@@ -1758,6 +1786,7 @@ section,
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow: visible;
 
 }
 .league h2 {
@@ -1821,6 +1850,9 @@ section,
 .league-box.active .league-content {
   height: 100%;
   opacity: 1;
+}
+.league .down-arrow-wrap{
+  right: -30px;
 }
 @media (min-width: 768px) {
   .league.section{
@@ -1899,9 +1931,9 @@ section,
   margin-bottom: 23px;
 }
 
-.chiprwall .scroll-pane .item{
+.chiprwall .swiper-slide{
   height: auto;
-  width: 166px;
+  width: 166px !important;
 }
 
 .chiprwall .grid-image{
@@ -1981,9 +2013,9 @@ section,
 .success-stories-hero h1 {
   font-family: var(--heading-font);
   font-weight: 700;
-  font-size: clamp(28px, 5vw + 10px, 68px);
+  font-size: var(--fs-60-80);
+  line-height: clamp(58px, 4.2vw, 60px);
   color: var(--accent-color);
-  line-height: 0.8824;
   text-transform: uppercase;
 }
 .stories .custom-container.container {
@@ -1999,17 +2031,44 @@ section,
   width: 370px;  /* 220px at 420px screen, 370px at 1440px */
   height: 214px; 
   position: relative;
+  background-size: cover;
+  background-position: top center;
+}
+.stories .item .img-wrapper.allison{
+  background-image: url(../img/Allison.png);
+}
+.stories .item .img-wrapper.tabatha{
+  background-image: url(../img/Tabatha.png);
+}
+.stories .item .img-wrapper.heather{
+  background-image: url(../img/Heather.png);
+}
+.stories .item .img-wrapper.jeromee{
+  background-image: url(../img/Jeromee.png);
+}
+.stories .item .img-wrapper.terrance{
+  background-image: url(../img/Terrance.png);
+}
+.stories .item .img-wrapper.hayden{
+  background-image: url(../img/Hayden.png);
+}
+.stories .item .img-wrapper.barbara{
+  background-image: url(../img/Barbara.png);
+}
+.stories .item .img-wrapper.maci{
+  background-image: url(../img/Maci.png);
+}
+.stories .item .img-wrapper.tyler{
+  background-image: url(../img/Tyler.png);
+}
+.stories .item .img-wrapper.brinsen{
+  background-image: url(../img/Brinsen.png);
 }
 
-.stories .item .absolute-item{
-  position: absolute;
-  top:0;
-  width: 100%;
-  height: 100%;
-}
-.stories .item img{
-  object-fit: cover;
-}
+
+
+
+
 
 .stories .img-footer {
   padding: 30px 0 30px 0px;
@@ -2017,7 +2076,8 @@ section,
 .stories .img-footer .title{
   display: flex;
   align-items: start;
-  justify-content: space-between;
+  justify-content: start;
+  flex-flow: column;
 }
 .stories .img-footer h6 {
   font-size: 28px;
@@ -2044,14 +2104,6 @@ section,
   transform: rotate(0deg);
 }
 .stories .img-footer .content {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
-}
-
-.stories .img-footer .content.show {
-  max-height: 200px;
   opacity: 1;
 }
 
@@ -2068,6 +2120,16 @@ section,
 }
 .stories .swiper-slide{
   width: 370px !important;
+}
+
+.stories .play-icon{
+  font-size: 68px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    margin: 0 auto;
+    color: var(--contrast-color);
+    left: 50%;
 }
 @media (max-width: 370px){
   .stories .img-footer{
@@ -2245,8 +2307,8 @@ section,
 }
 
 .role-hero h1 {
-  font-size: var(--fs-68-38);
-  line-height: 1;
+  font-size: var(--fs-60-80);
+  line-height: clamp(58px, 4.2vw, 60px);
   font-family: var(--heading-font);
   color: var(--accent-color);
   text-transform: uppercase;
@@ -2294,6 +2356,7 @@ section,
 .role-timeline .timeline-content p {
   font-size: var(--fs-14);
   line-height: normal;
+  margin-top: 1rem;
 }
 
 @media (max-width: 475px){
@@ -2321,7 +2384,7 @@ section,
 
 .role-win.section {
   background-image: url(../img/need-win-bg.png);
-  background-position: center;
+  background-position: top center;
   background-size: cover;
   border-top-left-radius: 40px;
   padding: 60px 0;
@@ -2507,6 +2570,11 @@ section,
   font-size: 18px;
   line-height: 1.3333;
 }
+@media (max-width: 768px){
+  .role-calculator .card{
+    padding: 10px;
+  }
+}
 /*--------------------------------------------------------------
 # Role success
 --------------------------------------------------------------*/
@@ -2579,8 +2647,8 @@ section,
 }
 
 .apply-hero h1 {
-  font-size: var(--fs-68-38);
-  line-height: 1;
+  font-size: var(--fs-60-80);
+  line-height: clamp(58px, 4.2vw, 60px);
   font-family: var(--heading-font);
   color: var(--accent-color);
   text-transform: uppercase;
@@ -2612,6 +2680,7 @@ section,
   font-family: var(--heading-font);
   text-transform: uppercase;
   color: var(--default-color);
+  font-weight: 600;
 }
 .apply-form .form-control,
 .apply-form .form-select {
@@ -2722,8 +2791,8 @@ section,
   margin-top: 2.778vh;
 }
 .scheduled-hero h1 {
-  font-size: clamp(38px, calc(2.94vw + 25.65px), 68px);
-  line-height: clamp(34px, calc(2.55vw + 23.29px), 60px);
+  font-size: var(--fs-60-80);
+  line-height: clamp(58px, 4.2vw, 60px);
   font-family: var(--heading-font);
   color: var(--contrast-color);
   text-transform: uppercase;
