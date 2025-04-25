@@ -1,4 +1,3 @@
-
 var token = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTc0MzQwNDIzOSwiaWF0IjoxNzQzNDA0MjM5fQ.Zq9Za-ap5kbXgBezl90lrBOJGTWjVt75n_q6hdo7ADE";
 var base_url = "https://core-services-api-e3a0bnafdsdbazb2.westus-01.azurewebsites.net/api";
 (function () {
@@ -263,9 +262,9 @@ const typeTarget = document.getElementById("typeTarget");
 const revealButton = document.getElementById("afterButton");
 
 const lines = [
-  "This isn’t a company that just talks about having a great culture and talks about investing in and caring about their people and talks about being awesome human beings. This is a company that is actually living, walking, talking, breathing, eating, sleeping that.",
+  "The biggest thing that I like to talk to people about is the environment that Chipr creates. It’s not just how different of a door to door space it is, you’re buying into something more.",
   "--",
-  { bold: "Terrance" },
+  { bold: "Brinsen" },
 ];
 
 let lineIndex = 0;

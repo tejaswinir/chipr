@@ -363,17 +363,15 @@
                            </h2>
                         </div>
                      </div>
-                     <div class="video-container">
+                     <div class="video-container"  data-aos="fade-up"
+                     data-aos-delay="100">
                         <video
                            class="responsive-video"
                            autoplay
                            loop
-                           muted
-                           data-aos="fade-in"
-                           data-aos-delay="100"
-                           >
+                           muted>
                            <source
-                              src="assets/img/videos/referral-hero-video.mp4"
+                              src="./assets/img/videos/referral-hero-video.mp4"
                               type="video/mp4"
                               />
                         </video>
@@ -433,17 +431,17 @@
                   </div>
                </div>
                <div class="row mt-6">
-                  <div class="video-form-container">
+                  <div class="video-form-container"  data-aos="fade-up"
+                  data-aos-delay="100">
                      <video
                         class="responsive-video"
                         autoplay
                         loop
                         muted
-                        data-aos="fade-up"
-                        data-aos-delay="100"
+                       
                         >
                         <source
-                           src="assets/img/videos/hero-video-form.mp4"
+                           src="./assets/img/videos/hero-video-form.mp4"
                            type="video/mp4"
                            />
                      </video>
@@ -476,17 +474,17 @@
                               </div>
                               <div class="col-sm-12 col-md-4 col-lg-4">
                                  <label
-                                    for="area"
+                                    for="location"
                                     class="form-label"
                                     data-aos="fade-up"
                                     data-aos-delay="180"
-                                    >Area</label
+                                    >location</label
                                     >
                                  <input
                                     type="text"
                                     class="form-control"
-                                    id="city"
-                                    placeholder="city*"
+                                    id="location"
+                                    placeholder="Location*"
                                     data-aos="fade-up"
                                     data-aos-delay="200"
                                     />
@@ -677,7 +675,7 @@
          
          navigator.geolocation.getCurrentPosition(
            async function (position) {
-             document.getElementById("city").value = "Loading ...";
+             document.getElementById("location").value = "Loading ...";
              const lat = position.coords.latitude;
              const lon = position.coords.longitude;
          
@@ -688,14 +686,16 @@
                `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`
              );
              const data = await res.json();
+             console.log("Geocoding response:", data);
          
-             const city = data.address.city;
+             const city = data.address.county;
+             console.log("City:", city);
          
              localStorage.setItem("location", city);
-             document.getElementById("city").value = city;
+             document.getElementById("location").value = city;
            },
            function (error) {
-             document.getElementById("city").value = "";
+             document.getElementById("location").value = "";
              console.error("Geolocation error:", error.message);
            }
          );

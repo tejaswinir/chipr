@@ -527,7 +527,7 @@
                  
                 </div>
                 <div class="modal-body">
-                 <p>Your seat with our hiring squad is officially saved. We’ll text you the details and a few pro tips—so you can show up ready to win. In the meantime, tap below to grab your prep guide or cruise our success stories for inspiration.</p>
+                 <p>Your seat with our hiring squad is officially saved. We’ll text you the details and a few pro tips—so you can show up ready to win.</p>
                 </div>
                 <div class="modal-footer">
                  
@@ -701,8 +701,11 @@
                `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`
              );
              const data = await res.json();
+             console.log("Geocoding response:", data);
          
-             const city = data.address.city;
+             const city = data.address.county;
+             console.log("Location:", city);
+             localStorage.setItem("location", city);
              document.getElementById("location").value = city;
            },
            function (error) {

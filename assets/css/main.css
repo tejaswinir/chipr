@@ -287,7 +287,7 @@ button.cta-btn-b:disabled {
 .body-01 {
   font-weight: 500;
   font-family: var(--default-font);
-  font-size: var(--fs-22-18);
+  font-size:22px;
   line-height: normal;
 }
 .body-02 {
@@ -466,6 +466,9 @@ hr{
     .svg-container{
       right: -50px;
     }
+  .body-01{
+    font-size: 18px;
+  }
 }
 /*--------------------------------------------------------------
 # Global Header
@@ -1297,7 +1300,7 @@ section,
 .career .h1 {
   font-family: var(--heading-font);
   font-weight: 700;
-  font-size: var(--fs-60-80);
+  font-size: var(--fs-68-38);
   line-height: clamp(58px, 4.2vw, 60px);
   color: var(--accent-color);
   text-transform: uppercase;
@@ -1308,11 +1311,7 @@ section,
 .career .content-wrap {
   margin-top: 2.778vh;
 }
-.career .body-01 {
-  font-weight: 600;
-  font-family: var(--default-font);
-  font-size: var(--fs-22-18);
-}
+
 .career .body-02 {
   font-weight: 600;
   font-family: var(--default-font);
@@ -1420,7 +1419,7 @@ section,
 .why-chipr .h1 {
   font-family: var(--heading-font);
   font-weight: 700;
-  font-size: var(--fs-60-80);
+  font-size: var(--fs-68-38);
   line-height: clamp(58px, 4.2vw, 60px);
   color: var(--accent-color);
   text-transform: uppercase;
@@ -1430,11 +1429,6 @@ section,
 }
 .why-chipr .content-wrap {
   margin-top: 2.778vh;
-}
-.why-chipr .body-01 {
-  font-weight: 600;
-  font-family: var(--default-font);
-  font-size: var(--fs-22-18);
 }
 .why-chipr .body-02 {
   font-weight: 600;
@@ -1518,9 +1512,9 @@ section,
   font-weight: 700;
   margin-bottom: 0;
 }
-.clients .type-container{
+/* .clients .type-container{
   margin-top: 20px;
-}
+} */
 .clients p {
   font-size: 16px;
   font-family: var(--default-font);
@@ -2023,7 +2017,7 @@ section,
 .success-stories-hero h1 {
   font-family: var(--heading-font);
   font-weight: 700;
-  font-size: var(--fs-60-80);
+  font-size: var(--fs-68-38);
   line-height: clamp(58px, 4.2vw, 60px);
   color: var(--accent-color);
   text-transform: uppercase;
@@ -2317,7 +2311,7 @@ section,
 }
 
 .role-hero h1 {
-  font-size: var(--fs-60-80);
+  font-size: var(--fs-68-38);
   line-height: clamp(58px, 4.2vw, 60px);
   font-family: var(--heading-font);
   color: var(--accent-color);
@@ -2658,7 +2652,7 @@ section,
 }
 
 .apply-hero h1 {
-  font-size: var(--fs-60-80);
+  font-size: var(--fs-68-38);
   line-height: clamp(58px, 4.2vw, 60px);
   font-family: var(--heading-font);
   color: var(--accent-color);
@@ -2802,7 +2796,7 @@ section,
   margin-top: 2.778vh;
 }
 .scheduled-hero h1 {
-  font-size: var(--fs-60-80);
+  font-size: var(--fs-68-38);
   line-height: clamp(58px, 4.2vw, 60px);
   font-family: var(--heading-font);
   color: var(--contrast-color);
