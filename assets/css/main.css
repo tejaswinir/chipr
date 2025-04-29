@@ -2032,8 +2032,8 @@ section,
   overflow: hidden;
 }
 .stories .item .img-wrapper{
-  width: 370px;  /* 220px at 420px screen, 370px at 1440px */
-  height: 214px; 
+  width: 100%;  /* 220px at 420px screen, 370px at 1440px */
+  padding-top: 60%;
   position: relative;
   background-size: cover;
   background-position: top center;
@@ -2123,7 +2123,7 @@ section,
   opacity: 1;
 }
 .stories .swiper-slide{
-  width: 370px !important;
+  width: 280px !important;
 }
 
 .stories .play-icon{

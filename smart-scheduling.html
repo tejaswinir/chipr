@@ -836,7 +836,7 @@
            let emailVal = $('#email').val().trim();
            let phoneVal = $('#phone').val().trim();
            let locationVal2 = $('#location').val().trim();
-           let interestVal = $('#interest').val();
+           let interestVal = $('#interest').val().trim();
            let data = {
                      "name": nameVal,
                      "email": emailVal,
@@ -847,7 +847,8 @@
                      "state": null,
                      "postal_code": null,
                      "country": null,
-                     "referrer_id": referralId
+                     "referrer_id": referralId,
+                     "interest": interestVal
                        }
            fetch(`${base_url}/applications/apply`, {
            method: "POST",
