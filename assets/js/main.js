@@ -11,12 +11,8 @@ var base_url = "https://core-services-api-e3a0bnafdsdbazb2.westus-01.azurewebsit
     initShowMoreButtons();
     initCompensationCalculator();
     initSwiper();
-    const path = window.location.pathname.toLowerCase();
-
-    // Only remove preloader if NOT on index or careers pages
-    if (!path.includes('referral') && !path.includes('index') && !path.includes('application-confirmation')) {
-      removePreloader();
-    }
+    removePreloader();
+   
   });
   /** Mobile nav toggle **/
   function initMobileNav() {
@@ -150,7 +146,6 @@ function initSwiper() {
     }
 
     function calculateRecruitBonus(recruits, avgSales, units) {
-      if (units < 15) return 0;
       return recruits * avgSales * 20;
     }
 
@@ -159,7 +154,6 @@ function initSwiper() {
         const radio = $(`#radio-${t}`);
         if (radio.length) {
           radio.prop('checked', t === tier.toLowerCase());
-          radio.prop('disabled', t !== tier.toLowerCase());
         }
       });
     }
@@ -183,12 +177,7 @@ function initSwiper() {
 
       $('#personalPay').text(personalPay.toFixed(2));
       $('#totalComp').text(totalComp.toFixed(2));
-
-      const enable = units >= 15;
-      $('#recruits, #avgSales').prop('disabled', !enable);
-      $('#recruits-btn-min, #recruits-btn-add, #avgSales-btn-min, #avgSales-btn-add').prop('disabled', !enable);
     }
-
     // Button click handlers
     $('.btn-action-add, .btn-action-min').on('click', function () {
       const id = $(this).attr('id').split('-')[0]; // e.g., units-btn-min => 'units'
@@ -202,13 +191,8 @@ function initSwiper() {
 
     // Slider input handlers
     $('#units, #recruits, #avgSales').on('input', updateUI);
-
     updateUI(); 
 }
-
-
-
-
 
   /** Preloader Removal **/
   function removePreloader() {
