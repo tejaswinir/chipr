@@ -1029,7 +1029,8 @@ section.fit-check-sm{
   transform: rotate(180deg);
 }
 
-.role-calculator .accordion-item:last-of-type>.accordion-header .accordion-button.collapsed {
+.role-calculator .accordion-item:last-of-type>.accordion-header .accordion-button.collapsed,
+.accordion-item:last-of-type {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
@@ -1190,11 +1191,7 @@ section.training{
   margin: 0;
 }
 
-.tabs-vertical li, .tabs-vertical{
-  list-style: none;
-  padding: 0;
-}
-.tabs-vertical li{
+.nav-link{
   font-family: var(--default-font);
   font-size: var(--fs-18-16);
   line-height: 1.75;
@@ -1207,16 +1204,26 @@ section.training{
   background-repeat: no-repeat;
   background-position: center right;
   padding-right: 40px;
+  border-radius: 0px;
+  text-align: left;
 }
-.tabs-vertical li:last-child{
+.nav-pills .nav-link{
+  border-radius: 0px;
+}
+.nav-link:last-child{
   border-bottom: 0px;
   margin-bottom: 0;
   padding-bottom: 0;
 }
 
-.tabs-vertical li.active{
+.nav-link.active, .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
   color: var(--accent-color);
   background-image: url(../img/active-arrow.svg);
+  background-color: transparent;
+}
+
+.nav-link:focus, .nav-link:hover{
+   color: var(--accent-color);
 }
 
 .tab-content{
@@ -1236,12 +1243,15 @@ section.training{
    background: transparent;
 }
 .q-a-section .accordion-item{
-  background-color: #F2F2F2;
-  border: 0px
+  background-color: transparent;
+  border: 0px;
+  border-bottom: 1px solid var(--contrast-color);
+  
 }
 
 .q-a-section .accordion-body{
-  background-color: var(--background-color);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--contrast-color)
 }
 .q-a-section .accordion-button:not(.collapsed){
   background-color: transparent;
@@ -1249,7 +1259,23 @@ section.training{
 }
 .q-a-section .accordion-button{
   background-color: transparent;
+  color: var(--contrast-color);
+  padding: 1rem 1.25rem 1rem 0px
 }
 .q-a-section .accordion-button:focus{
   box-shadow: none;
+}
+.accordion-item:first-of-type>.accordion-header .accordion-button,.accordion-item:last-of-type>.accordion-header .accordion-button.collapsed{
+  border-radius: 0px;
+}
+.accordion-button:not(.collapsed){
+  background-color: transparent;
+  box-shadow: none
+}
+
+.accordion-button::after{
+  background-image: url(../img/up.svg);
+}
+.accordion-button:not(.collapsed)::after{
+   background-image: url(../img/up.svg);
 }
