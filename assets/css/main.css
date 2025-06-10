@@ -63,7 +63,10 @@
   --fs-60-80: clamp(60px, calc(60px + 20 * ((100vw - 420px) / 1020)), 80px);
   --fs-68-38: clamp(38px, calc(38px + 20 * ((100vw - 420px) / 1020)), 68px);
   --fs-46-28: clamp(28px, calc(28px + 20 * ((100vw - 420px) / 1020)), 46px);
+  --fs-36-28: clamp(28px, calc(28px + 20 * ((100vw - 420px) / 1020)), 36px);
+  --fs-39-29: clamp(29px, calc(29px + 20 * ((100vw - 420px) / 1020)), 39px);
   --fs-28-18: clamp(18px, calc(18px + (28px - 18px) * ((100vw - 420px) / (1440 - 420))), 28px);
+ --fs-24-18: clamp(18px, calc(18px + 6 * ((100vw - 420px) / 1020)), 24px);
   --fs-22-18: clamp(18px, calc(22px - 4px * ((100vw - 420px) / 1020)), 22px);
   --fs-22-16: clamp(16px, calc(22px - 6px * ((100vw - 420px) / 1020)), 22px);
   --fs-22-12: clamp(12px, calc(22px - 10px * ((100vw - 420px) / 1020)), 22px);
@@ -155,6 +158,9 @@ h6 {
   margin-top: 2.125rem;
 }
 
+.mt-36 {
+  margin-top: 2.25rem;
+}
 .mt-31 {
   margin-top: 1.938rem;
 }
@@ -252,6 +258,19 @@ button.cta-btn-b:disabled {
   border-color: var(--accent-color);
 }
 
+.cta-btn-filled{
+  background-color: var(--accent-color);
+  color: var(--contrast-color)
+}
+.cta-btn.cta-btn-filled:hover{
+  background-color: var(--contrast-color);
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+}
+.btn-black{
+  background-color: var(--default-color);
+  color: var(--contrast-color);
+}
 @media (max-width: 576px) {
   .custom-container {
     padding-left: 40px;
@@ -269,6 +288,9 @@ button.cta-btn-b:disabled {
 
 .text-accent {
   color: var(--accent-color);
+}
+.text-default {
+  color: var(--default-color);
 }
 
 .scroll-pane {
@@ -871,12 +893,105 @@ h2.white{
 h2.accent{
   color: var(--accent-color)
 }
+.custom-list{
+  padding: 0;
+}
 
+.border-l{
+  border-left: 1px solid var(--contrast-color);
+}
+.border-r{
+   border-right: 1px solid var(--contrast-color);
+}
+.last-col{
+  padding: 0 0 0 20px;
+}
+.custom-list li{
+  list-style: none;
+  font-weight: bold;
+  position: relative;
+  padding-left: 31px;
+}
+.custom-list li::before{
+  content: '';
+  width: 17px;
+  height: 4px;
+  background-color: var(--accent-color);
+  position: absolute;
+  left:0;
+  top:50%;
+  transform: translateY(-2px);
+}
+
+.role-hero{
+   padding: 204px 0 80px
+}
+
+section.fit-check{
+  background-color: #F2F2F2;
+}
+
+.fit-check .content-wrapper{
+  max-width: 582px;
+  background-color: #000000;
+  color: var(--contrast-color);
+  padding: 40px 70px;
+}
+section.fit-check-sm{
+    background-color: #000000;
+}
+
+.fit-check p{
+  font-size: var(--fs-18);
+  font-weight: 400;
+}
+
+.fit-check p.lead{
+  font-size: var(--fs-24-18);
+  font-weight: bold;
+}
+
+.fit-check-sm .content-wrapper{
+  padding: 0 0px 44px;
+  max-width: 100%;
+}
+.fit-check .content-wrapper h3{
+  color: var(--contrast-color);
+  font-family: var(--heading-font);
+  font-size: var(--fs-36-28);
+  text-transform: uppercase;
+  margin-bottom: 0;
+  line-height: 1;
+}
+
+.fit-check .content-wrapper h4{
+  color: var(--contrast-color);
+  font-family: var(--heading-font);
+  font-size: var(--fs-39-29);
+  text-transform: uppercase;
+  margin-bottom: 0;
+   line-height: 1;
+}
+.fit-check .content-wrapper h6{
+  font-family: var(--heading-font);
+  font-size: var(--fs-22-16);
+  color: var(--contrast-color);
+  margin-bottom: 0;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.fit-check .content-wrapper p{
+   font-family: var(--heading-font);
+   font-family: var(--fs-18-16);
+   margin-bottom: 0;
+}
 
 .role-calculator.section {
   background-image: url(../img/role-calculator-bg.png);
   background-position: center;
   background-size: cover;
+ 
 }
 
 .role-calculator h2 {
@@ -1018,6 +1133,10 @@ h2.accent{
 }
 
 @media (max-width: 768px) {
+  .role-hero{
+   padding: 67px 0px 40px
+}
+
   .role-calculator .card {
     padding: 10px;
   }
@@ -1049,8 +1168,9 @@ h2.accent{
 }
 
 section.q-a-section{
-   background-color: #F2F2F2;
+  background-color: var(--default-color);
   padding: 80px 0;
+  color: var(--contrast-color)
 }
 
 
@@ -1062,7 +1182,7 @@ section.apply-form{
   padding: 80px 0;
 }
 section.training{
-  background-color: var(--default-color);
+  background-color: var(--accent-color);
 }
 .training h2{
   text-align: center;
@@ -1081,8 +1201,12 @@ section.training{
   padding-bottom: 10px;
   border-bottom: 1px solid #d9dbea;
   margin-bottom: 5px;
-  color: var(--default-color);
+  color: var(--contrast-color);
   cursor: pointer;
+  background-image: url(../img/next-arrow.svg);
+  background-repeat: no-repeat;
+  background-position: center right;
+  padding-right: 40px;
 }
 .tabs-vertical li:last-child{
   border-bottom: 0px;
@@ -1091,20 +1215,23 @@ section.training{
 }
 
 .tabs-vertical li.active{
-  color: var(--accent-color)
+  color: var(--accent-color);
+  background-image: url(../img/active-arrow.svg);
 }
 
 .tab-content{
   margin-left: 40px;
-  padding: 10px 30px;
-  background-color: var(--background-color);
+  padding: 26px 30px;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .tab-content p {
   line-height: 1.8333;
   font-size: var(--fs-16-12);
 }
-
+.q-a-section h2{
+  color: var(--contrast-color)
+}
 .q-a-section .accordion{
    background: transparent;
 }
